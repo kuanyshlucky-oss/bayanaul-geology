@@ -172,7 +172,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .mbtns .g2{background:#1ba136;border-color:#1ba136;color:#fff}.mbtns .g2:hover{background:#158a2d;border-color:#158a2d}
 .mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
 .mbtns svg{width:18px;height:18px;flex:none}
-.copied{font-size:13px;color:#1ba136;min-height:1em;text-align:center}
+.cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px Inter,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
 @media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.mapw iframe{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
 /* подвал */
 footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
@@ -346,11 +346,9 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
         <div class="mbtns">
           <a class="g2" id="go2gis" href="https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>2ГИС</a>
           <a id="goYa" href="https://yandex.kz/maps/?pt=73.160842,49.795671&amp;z=17&amp;l=map">Яндекс Карты</a>
-          <a id="goG" href="https://www.google.com/maps/search/?api=1&amp;query=49.795671,73.160842">Google Карты</a>
-          <button type="button" id="copyAddr"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Копировать</button>
           <a class="rt" id="goRoute" href="https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg>Построить маршрут</a>
         </div>
-        <div class="copied" id="copied" role="status"></div>
+        <button type="button" class="cpy" id="copyAddr"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span id="copied">Скопировать адрес для такси или мессенджера</span></button>
       </div>
     </div>
     <div class="copy" id="yr"></div>
@@ -378,7 +376,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
   const intent=u=>'intent://'+u.replace('https://','')+'#Intent;scheme=https;package=ru.dublgis.dgismobile;S.browser_fallback_url='+encodeURIComponent(u)+';end';
   if(isAnd){document.getElementById('go2gis').href=intent(web);document.getElementById('goRoute').href=intent(route)}
   const cb=document.getElementById('copyAddr'),cp=document.getElementById('copied');
-  cb.addEventListener('click',async()=>{const t='Караганда, ул. Таттимбета, 10/2';try{await navigator.clipboard.writeText(t);cp.textContent='Адрес скопирован'}catch(e){cp.textContent=t}setTimeout(()=>cp.textContent='',2500)});
+  const def=cp.textContent;cb.addEventListener('click',async()=>{const t='Караганда, ул. Таттимбета, 10/2';try{await navigator.clipboard.writeText(t);cp.textContent='Адрес скопирован ✓';cb.classList.add('ok')}catch(e){cp.textContent=t}setTimeout(()=>{cp.textContent=def;cb.classList.remove('ok')},2500)});
 }
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
