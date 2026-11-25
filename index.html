@@ -52,6 +52,9 @@ header{position:sticky;top:0;z-index:30;background:rgb(255 255 255/.96);backdrop
 .logo img{height:36px;display:block}
 nav{display:flex;gap:2px;margin-left:auto}
 nav a{text-decoration:none;font-weight:500;font-size:15px;padding:10px 12px;border-radius:6px;color:var(--mute)}nav a:hover{color:var(--ink);background:var(--bg2)}
+nav a.on{color:var(--red);background:#fdecec}
+[data-pg].off{display:none}
+.pgnav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:0 max(4vw,16px) clamp(48px,6vw,80px)}
 .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
 .menu{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;color:var(--ink)}
 @media(max-width:1060px){.bar .btn{display:none}}
@@ -259,20 +262,19 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
     <a class="logo" href="#top" aria-label="Bayanaul Geology — на главную"><img src="media/logo.png" alt="Bayanaul Geology"></a>
     <button class="menu" id="menu" aria-label="Меню" aria-expanded="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <nav id="nav">
-      <a href="#services">Услуги</a>
-      <a href="#works">Объекты</a>
-      <a href="#process">Этапы</a>
-      <a href="#clients">Заказчики</a>
-      <a href="#team">Руководство</a>
-      <a href="#news">Новости</a>
-      <a href="#request">Контакты</a>
+      <a href="#services" data-nav="services">Услуги</a>
+      <a href="#works" data-nav="works">Объекты</a>
+      <a href="#team" data-nav="team">Руководство</a>
+      <a href="#awards" data-nav="awards">Достижения</a>
+      <a href="#news" data-nav="news">Новости</a>
+      <a href="#request" data-nav="request">Контакты</a>
     </nav>
     <a class="btn p" href="#request">Оставить заявку</a>
   </div>
 </header>
 
 <main id="top">
-<section class="hero">
+<section class="hero" data-pg="home">
   <div class="wrap">
     <div>
       <div class="kicker">Bayanaul Geology</div>
@@ -296,7 +298,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band grey" id="services">
+<section class="band grey" id="services" data-pg="home services">
   <div class="wrap">
     <div class="kicker">Услуги</div>
     <div class="head"><h2>Что мы делаем</h2><p class="lead" style="margin:0">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex.</p></div>
@@ -304,7 +306,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="strip" style="background-image:url(media/camp.jpg)">
+<section class="strip" data-pg="home" style="background-image:url(media/camp.jpg)">
   <div class="wrap">
     <h2>Выезжаем в любую точку Казахстана</h2>
     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur lorem ipsum dolor sit.</p>
@@ -312,7 +314,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band" id="works">
+<section class="band" id="works" data-pg="works">
   <div class="wrap">
     <div class="kicker">Объекты</div>
     <div class="head"><h2>Работа в поле</h2><a class="btn o" href="https://www.instagram.com/bayanaul.geology/">Больше в Instagram</a></div>
@@ -322,7 +324,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
 <div class="nm" id="nm" role="dialog" aria-modal="true" aria-labelledby="nmt"><div class="nmb"><button class="nmx" id="nmx" aria-label="Закрыть">✕</button><div id="nmi"></div><div class="nmc"><div class="nmeta" id="nmm"></div><h3 id="nmt"></h3><p class="txt" id="nmtx"></p><div id="nml"></div></div></div></div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Фото"><button class="lbx" id="lbx" aria-label="Закрыть">✕</button><img id="lbi" alt=""><p id="lbc"></p></div>
 
-<section class="band grey" id="process">
+<section class="band" id="process" data-pg="services">
   <div class="wrap">
     <div class="kicker">Этапы</div>
     <h2>Как мы работаем</h2>
@@ -330,7 +332,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band" id="clients">
+<section class="band grey" id="clients" data-pg="services">
   <div class="wrap who">
     <div>
       <div class="kicker">Заказчики</div>
@@ -341,7 +343,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band grey" id="team">
+<section class="band grey" id="team" data-pg="team">
   <div class="wrap">
     <div class="kicker">Руководство</div>
     <div class="head"><h2>Команда компании</h2><p class="lead" style="margin:0">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt.</p></div>
@@ -349,7 +351,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band" id="awards">
+<section class="band grey" id="awards" data-pg="awards">
   <div class="wrap">
     <div class="kicker">Достижения</div>
     <div class="head"><h2>Награды и сертификаты</h2><p class="lead" style="margin:0">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.</p></div>
@@ -357,7 +359,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band grey" id="news">
+<section class="band grey" id="news" data-pg="news">
   <div class="wrap">
     <div class="kicker">Новости</div>
     <div class="head"><h2>Из жизни компании</h2><a class="btn o" href="https://www.instagram.com/bayanaul.geology/">@bayanaul.geology</a></div>
@@ -365,7 +367,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </section>
 
-<section class="band req" id="request">
+<section class="band req" id="request" data-pg="home request">
   <div class="wrap">
     <div>
       <div class="kicker">Контакты</div>
@@ -401,6 +403,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
     </div>
   </div>
 </section>
+<div class="pgnav" id="pgnav" hidden><a class="btn o" href="#top">← На главную</a><a class="btn p" href="#request">Оставить заявку</a></div>
 </main>
 
 <footer>
@@ -474,6 +477,22 @@ const sel=document.getElementById('f-svc');
     if(isAnd){location.href='intent://'+u.host+u.pathname+u.search+u.hash+'#Intent;scheme=https;package='+app[1]+';S.browser_fallback_url='+encodeURIComponent(u.href)+';end'}
     else location.href=u.href; /* та же вкладка: iOS сам откроет приложение, если оно установлено */
   });
+}
+/* Разделы-страницы: пункт меню показывает только свой раздел */
+{
+  const PAGES=['services','works','team','awards','news','request'];
+  const secs=[...document.querySelectorAll('[data-pg]')],links=[...document.querySelectorAll('[data-nav]')],pn=document.getElementById('pgnav');
+  const route=()=>{
+    const h=decodeURIComponent(location.hash.slice(1));
+    const page=PAGES.includes(h)?h:(h===''||h==='top'?'home':null);
+    if(!page)return; /* например #map — просто прокрутка */
+    secs.forEach(x=>x.classList.toggle('off',!x.dataset.pg.split(' ').includes(page)));
+    links.forEach(a=>a.classList.toggle('on',a.dataset.nav===page));
+    pn.hidden=page==='home'||page==='request';
+    scrollTo({top:0,behavior:'instant'});
+    if(page!=='home'){const t=document.getElementById(page);if(t)t.classList.remove('off')}
+  };
+  addEventListener('hashchange',route);route();
 }
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
