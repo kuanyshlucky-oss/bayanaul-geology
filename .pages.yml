@@ -27,6 +27,29 @@ content:
       - { name: image, label: Фото, type: image }
       - { name: caption, label: Подпись, type: string }
 
+  - name: team
+    label: Руководство
+    type: file
+    path: content/team.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Имя и фамилия, type: string }
+      - { name: role, label: Должность, type: string }
+      - { name: text, label: Коротко о человеке (необязательно), type: text }
+      - { name: photo, label: Фото (лучше вертикальное), type: image }
+
+  - name: awards
+    label: Достижения
+    type: file
+    path: content/awards.json
+    format: json
+    list: true
+    fields:
+      - { name: title, label: Название (грамота, сертификат, награда), type: string }
+      - { name: year, label: Год, type: string }
+      - { name: image, label: Фото или скан, type: image }
+
   - name: services
     label: Услуги
     type: file
