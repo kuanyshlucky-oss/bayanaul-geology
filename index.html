@@ -349,11 +349,6 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 }
 @media(prefers-reduced-motion:reduce){.nfeat,.ncard,.tm,.aw,.nfeat::after,.ncard::after,.tm::after,.aw::after,.nimg img,.tph img,.aph img,.aph .ph{transition:none}.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:none}}
 
-/* анимация слоёв в блоке «Что мы делаем» */
-.svhead{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}
-.layers{width:clamp(200px,24vw,300px);aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:0 14px 36px rgb(20 25 30/.12);background:#9a9a9a}
-.layers video{width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:700px){.svhead{grid-template-columns:minmax(0,1fr)}.layers{justify-self:center;width:min(280px,100%)}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
@@ -407,10 +402,8 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 
 <section class="band grey" id="services" data-pg="home services">
   <div class="wrap">
-    <div class="svhead">
-      <div><div class="kicker">Услуги</div><h2>Что мы делаем</h2></div>
-      <div class="layers" aria-hidden="true"><video src="media/layers.mp4" poster="media/layers-poster.jpg" autoplay muted loop playsinline></video></div>
-    </div>
+    <div class="kicker">Услуги</div>
+    <h2>Что мы делаем</h2>
     <div class="cards" id="cards"></div>
   </div>
 </section>
