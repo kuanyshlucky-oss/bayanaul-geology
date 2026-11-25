@@ -381,7 +381,8 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
   if(isAnd){document.getElementById('go2gis').href=intent(web);document.getElementById('goRoute').href=intent(route)}
   if(window.L){try{
     const P=[49.795671,73.160842],mob=matchMedia('(max-width:760px)').matches;
-    const m=L.map('lmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomControl:true,attributionControl:true}).setView(P,16);
+    const m=L.map('lmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomControl:false,attributionControl:true}).setView(P,16);
+    L.control.zoom({position:'bottomright',zoomInTitle:'Приблизить',zoomOutTitle:'Отдалить'}).addTo(m);m.attributionControl.setPrefix(false);
     L.tileLayer('https://tile{s}.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1',{subdomains:'0123',maxZoom:18,attribution:'© <a href="https://2gis.kz">2ГИС</a>'}).addTo(m);
     const ic=L.divIcon({className:'',iconSize:[34,46],iconAnchor:[17,46],html:'<svg class="dpin" viewBox="0 0 34 46"><path d="M17 0C7.6 0 0 7.6 0 17c0 12.7 17 29 17 29s17-16.3 17-29C34 7.6 26.4 0 17 0z" fill="#e31e24"/><circle cx="17" cy="17" r="6.5" fill="#fff"/></svg>'});
     L.marker(P,{icon:ic,title:'Bayanaul Geology'}).addTo(m).on('click',()=>{location.href=document.getElementById('go2gis').href});
