@@ -471,8 +471,8 @@ const applySettings=st=>{
   if(ph){document.querySelectorAll('[data-phone]').forEach(e=>e.textContent=ph);document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.href='tel:+'+digits)}
   const w=(st.whatsapp||'').replace(/\D/g,'');if(w){WA=w;document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/'+w)}
   if(st.address)document.querySelectorAll('[data-addr]').forEach(e=>e.textContent=st.address);
-  const S=[['WhatsApp',w?'https://wa.me/'+w:''],['Telegram',st.telegram],['Instagram',st.instagram],['Facebook',st.facebook],['LinkedIn',st.linkedin]].filter(x=>x[1]);
-  const h=S.map(([n,u])=>`<a href="${esc(u)}" aria-label="${n}" title="${n}"><svg viewBox="0 0 24 24">${SICON[n]}</svg></a>`).join('');
+  const S=[['WhatsApp',w?'https://wa.me/'+w:''],['Telegram',st.telegram],['Instagram',st.instagram],['Facebook',st.facebook],['LinkedIn',st.linkedin]];
+  const h=S.map(([n,u])=>`<a href="${u?esc(u):'#'}" aria-label="${n}" title="${n}"${u?'':' data-soon'}><svg viewBox="0 0 24 24">${SICON[n]}</svg></a>`).join('');
   document.querySelectorAll('[data-soc]').forEach(el=>el.innerHTML=h);
 };
 const J=p=>fetch(p,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
