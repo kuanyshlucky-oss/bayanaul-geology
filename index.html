@@ -159,7 +159,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .socl{margin-top:22px}.socl small{display:block;color:var(--mute);font-size:14px;margin-bottom:10px}
 /* карта */
 .mapw{grid-column:1/-1;position:relative;border-radius:14px;overflow:hidden;background:#22272c;border:1px solid #31363b;margin-top:8px;min-height:420px}
-.mapw iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.lmap{position:absolute;inset:0;background:#e9e6df;z-index:1}
+.lmap .leaflet-control-attribution{font-size:11px}
+.dpin{width:34px;height:46px;filter:drop-shadow(0 4px 6px rgb(0 0 0/.35))}
 .mcard{position:relative;z-index:2;margin:24px;width:min(380px,calc(100% - 48px));background:#fff;color:var(--ink);border-radius:12px;padding:22px;box-shadow:0 14px 40px rgb(0 0 0/.3);display:grid;gap:14px}
 .mcard .t{display:flex;gap:12px;align-items:flex-start}
 .mcard .pin{width:40px;height:40px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
@@ -173,7 +175,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
 .mbtns svg{width:18px;height:18px;flex:none}
 .cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px Inter,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
-@media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.mapw iframe{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
+@media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.lmap{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
 /* подвал */
 footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px}
@@ -185,6 +187,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gal img{transition:none}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 
@@ -339,7 +342,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
       <a href="tel:+77472792271">+7 747 279 22 71</a><a href="#map">Караганда, ул. Таттимбета, 10/2</a><a href="https://wa.me/77472792271">WhatsApp</a><div class="soc dk" data-soc style="margin-top:12px"></div>
     </div>
     <div class="mapw" id="map">
-      <iframe title="Карта: Караганда, ул. Таттимбета, 10/2" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=49.795671,73.160842&amp;z=16&amp;hl=ru&amp;output=embed"></iframe>
+      <div class="lmap" id="lmap" role="img" aria-label="Карта 2ГИС: Караганда, ул. Таттимбета, 10/2"></div>
       <div class="mcard">
         <div class="t"><span class="pin"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
           <div><small>Офис Bayanaul Geology</small><b>Караганда, ул. Таттимбета, 10/2</b><div class="sub">Юго-Восточный микрорайон, Казыбек би район, 100024</div></div></div>
@@ -355,6 +358,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 {
 /* ССЫЛКИ НА СОЦСЕТИ — замените "#" на свои ссылки */
@@ -375,6 +379,14 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
   const route='https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527';
   const intent=u=>'intent://'+u.replace('https://','')+'#Intent;scheme=https;package=ru.dublgis.dgismobile;S.browser_fallback_url='+encodeURIComponent(u)+';end';
   if(isAnd){document.getElementById('go2gis').href=intent(web);document.getElementById('goRoute').href=intent(route)}
+  if(window.L){try{
+    const P=[49.795671,73.160842],mob=matchMedia('(max-width:760px)').matches;
+    const m=L.map('lmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomControl:true,attributionControl:true}).setView(P,16);
+    L.tileLayer('https://tile{s}.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1',{subdomains:'0123',maxZoom:18,attribution:'© <a href="https://2gis.kz">2ГИС</a>'}).addTo(m);
+    const ic=L.divIcon({className:'',iconSize:[34,46],iconAnchor:[17,46],html:'<svg class="dpin" viewBox="0 0 34 46"><path d="M17 0C7.6 0 0 7.6 0 17c0 12.7 17 29 17 29s17-16.3 17-29C34 7.6 26.4 0 17 0z" fill="#e31e24"/><circle cx="17" cy="17" r="6.5" fill="#fff"/></svg>'});
+    L.marker(P,{icon:ic,title:'Bayanaul Geology'}).addTo(m).on('click',()=>{location.href=document.getElementById('go2gis').href});
+    if(!mob)m.panBy([-200,0],{animate:false});
+  }catch(e){}}
   const cb=document.getElementById('copyAddr'),cp=document.getElementById('copied');
   const def=cp.textContent;cb.addEventListener('click',async()=>{const t='Караганда, ул. Таттимбета, 10/2';try{await navigator.clipboard.writeText(t);cp.textContent='Адрес скопирован ✓';cb.classList.add('ok')}catch(e){cp.textContent=t}setTimeout(()=>{cp.textContent=def;cb.classList.remove('ok')},2500)});
 }
