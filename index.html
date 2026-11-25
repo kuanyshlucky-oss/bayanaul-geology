@@ -158,13 +158,22 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .soc.dk a{background:#262b30;border-color:#31363b;color:#fff}
 .socl{margin-top:22px}.socl small{display:block;color:var(--mute);font-size:14px;margin-bottom:10px}
 /* карта */
-.map{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:0;border-radius:12px;overflow:hidden;border:1px solid #31363b;background:#22272c;margin-top:8px}
-.map .mi{padding:24px;display:flex;flex-direction:column;gap:10px}
-.map .mi b{color:#fff;font:700 18px Manrope,sans-serif}
-.map .mi a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;background:#2d3338;color:#fff;width:fit-content;font-size:15px}
-.map .mi a:hover{background:var(--red)}
-.map iframe{width:100%;height:100%;min-height:300px;border:0;display:block;filter:grayscale(.2)}
-@media(max-width:760px){.map{grid-template-columns:minmax(0,1fr)}}
+.mapw{grid-column:1/-1;position:relative;border-radius:14px;overflow:hidden;background:#22272c;border:1px solid #31363b;margin-top:8px;min-height:420px}
+.mapw iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.mcard{position:relative;z-index:2;margin:24px;width:min(380px,calc(100% - 48px));background:#fff;color:var(--ink);border-radius:12px;padding:22px;box-shadow:0 14px 40px rgb(0 0 0/.3);display:grid;gap:14px}
+.mcard .t{display:flex;gap:12px;align-items:flex-start}
+.mcard .pin{width:40px;height:40px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
+.mcard small{display:block;color:var(--mute);font-size:13px}
+.mcard b{display:block;font:800 19px/1.25 Manrope,sans-serif;color:var(--ink)}
+.mcard .sub{font-size:14px;color:var(--mute);margin-top:2px}
+.mbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mbtns a,.mbtns button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:8px;font:600 14px Inter,sans-serif;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;padding:0 10px}
+.mbtns a:hover,.mbtns button:hover{border-color:var(--ink)}
+.mbtns .g2{background:#1ba136;border-color:#1ba136;color:#fff}.mbtns .g2:hover{background:#158a2d;border-color:#158a2d}
+.mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
+.mbtns svg{width:18px;height:18px;flex:none}
+.copied{font-size:13px;color:#1ba136;min-height:1em;text-align:center}
+@media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.mapw iframe{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
 /* подвал */
 footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px}
@@ -329,15 +338,20 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
       <h4>Связь</h4>
       <a href="tel:+77472792271">+7 747 279 22 71</a><a href="#map">Караганда, ул. Таттимбета, 10/2</a><a href="https://wa.me/77472792271">WhatsApp</a><div class="soc dk" data-soc style="margin-top:12px"></div>
     </div>
-    <div class="map" id="map">
-      <div class="mi">
-        <h4 style="margin:0">Офис</h4>
-        <b>Караганда, ул. Таттимбета, 10/2</b>
-        <span>Работаем по всему Казахстану</span>
-        <a href="https://2gis.kz/karaganda/search/%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2">Открыть в 2ГИС</a>
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2">Открыть в Google Картах</a>
+    <div class="mapw" id="map">
+      <iframe title="Карта: Караганда, ул. Таттимбета, 10/2" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=49.795671,73.160842&amp;z=16&amp;hl=ru&amp;output=embed"></iframe>
+      <div class="mcard">
+        <div class="t"><span class="pin"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><small>Офис Bayanaul Geology</small><b>Караганда, ул. Таттимбета, 10/2</b><div class="sub">Юго-Восточный микрорайон, Казыбек би район, 100024</div></div></div>
+        <div class="mbtns">
+          <a class="g2" id="go2gis" href="https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>2ГИС</a>
+          <a id="goYa" href="https://yandex.kz/maps/?pt=73.160842,49.795671&amp;z=17&amp;l=map">Яндекс Карты</a>
+          <a id="goG" href="https://www.google.com/maps/search/?api=1&amp;query=49.795671,73.160842">Google Карты</a>
+          <button type="button" id="copyAddr"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Копировать</button>
+          <a class="rt" id="goRoute" href="https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg>Построить маршрут</a>
+        </div>
+        <div class="copied" id="copied" role="status"></div>
       </div>
-      <iframe title="Карта: Караганда, ул. Таттимбета, 10/2" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2&amp;z=16&amp;hl=ru&amp;output=embed"></iframe>
     </div>
     <div class="copy" id="yr"></div>
   </div>
@@ -356,6 +370,16 @@ const SOC=[
 const socHtml=SOC.map(([n,u,p])=>`<a href="${u}" aria-label="${n}" title="${n}"${u==='#'?' data-soon':''}><svg viewBox="0 0 24 24">${p}</svg></a>`).join('');
 document.querySelectorAll('[data-soc]').forEach(el=>el.innerHTML=socHtml);
 document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');if(a)e.preventDefault()});
+/* карта: на телефоне открываем приложение 2ГИС, на компьютере — сайт */
+{
+  const ua=navigator.userAgent,isAnd=/Android/i.test(ua);
+  const web='https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671';
+  const route='https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527';
+  const intent=u=>'intent://'+u.replace('https://','')+'#Intent;scheme=https;package=ru.dublgis.dgismobile;S.browser_fallback_url='+encodeURIComponent(u)+';end';
+  if(isAnd){document.getElementById('go2gis').href=intent(web);document.getElementById('goRoute').href=intent(route)}
+  const cb=document.getElementById('copyAddr'),cp=document.getElementById('copied');
+  cb.addEventListener('click',async()=>{const t='Караганда, ул. Таттимбета, 10/2';try{await navigator.clipboard.writeText(t);cp.textContent='Адрес скопирован'}catch(e){cp.textContent=t}setTimeout(()=>cp.textContent='',2500)});
+}
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
  water:'<svg class="i" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>',
