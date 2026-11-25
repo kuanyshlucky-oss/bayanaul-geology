@@ -314,6 +314,25 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
   .eqc:hover .btn.o{background:var(--red);border-color:var(--red);color:#fff}
 }
 @media(prefers-reduced-motion:reduce){.eqc,.eqc::after,.eqp img,.eqp::after{transition:none}.eqc:hover{transform:none}}
+
+/* Анимация при наведении: новости, руководство, достижения */
+.nfeat,.ncard,.tm,.aw{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.nfeat::after,.ncard::after,.tm::after,.aw::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:2}
+.nimg img,.tph img,.aph img,.aph .ph{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.nfeat h3,.ncard h3,.tm h3,.aw b,.nmore{transition:color .3s,letter-spacing .3s}
+.tph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgb(0 0 0/.25));opacity:0;transition:opacity .4s}
+.nmore{display:inline-flex;gap:6px}
+@media(hover:hover){
+  .nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgb(20 25 30/.16);border-color:transparent}
+  .nfeat:hover{transform:translateY(-6px)}
+  .nfeat:hover::after,.ncard:hover::after,.tm:hover::after,.aw:hover::after{transform:scaleX(1)}
+  .nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img{transform:scale(1.07);filter:saturate(1.1) contrast(1.05)}
+  .tm:hover .tph::after{opacity:1}
+  .aw:hover .aph img,.aw:hover .aph .ph{transform:scale(1.05) rotate(-1.2deg)}
+  .nfeat:hover h3,.ncard:hover h3,.tm:hover h3,.aw:hover b{color:var(--red)}
+  .nfeat:hover .nmore,.ncard:hover .nmore{letter-spacing:.02em}
+}
+@media(prefers-reduced-motion:reduce){.nfeat,.ncard,.tm,.aw,.nfeat::after,.ncard::after,.tm::after,.aw::after,.nimg img,.tph img,.aph img,.aph .ph{transition:none}.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:none}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
