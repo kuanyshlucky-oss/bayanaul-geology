@@ -397,7 +397,6 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
     <div class="kicker">Спецтехника</div>
     <h2>Наша техника</h2>
     <div class="eq" id="eql"></div>
-    <p class="eqnote" id="eqnote" hidden>Фото и характеристики указаны для примера и будут заменены на данные нашей техники. Фото: Unsplash.</p>
   </div>
 </section>
 
@@ -620,8 +619,7 @@ const applySettings=st=>{
 };
 const J=p=>fetch(p,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
 let EQ=[];
-const renderEq=e=>{EQ=e;document.getElementById('eql').innerHTML=e.map((x,i)=>`<article class="eqc"><div class="eqp" data-e="${i}">${x.photo?`<img src="${esc(x.photo)}" alt="${esc(x.name)}" loading="lazy">`:''}${x.example?'<span class="eqbadge">Пример</span>':''}</div><div class="eqb"><h3>${esc(x.name)}</h3>${x.text?`<p>${esc(x.text)}</p>`:''}${(x.specs||[]).length?`<table class="eqt"><tbody>${x.specs.map(r=>`<tr><td>${esc(r.label)}</td><td>${esc(r.value)}</td></tr>`).join('')}</tbody></table>`:''}<a class="btn o" href="#request">Заказать выезд</a></div></article>`).join('');
-  document.getElementById('eqnote').hidden=!e.some(x=>x.example)};
+const renderEq=e=>{EQ=e;document.getElementById('eql').innerHTML=e.map((x,i)=>`<article class="eqc"><div class="eqp" data-e="${i}">${x.photo?`<img src="${esc(x.photo)}" alt="${esc(x.name)}" loading="lazy">`:''}${x.example?'<span class="eqbadge">Пример</span>':''}</div><div class="eqb"><h3>${esc(x.name)}</h3>${x.text?`<p>${esc(x.text)}</p>`:''}${(x.specs||[]).length?`<table class="eqt"><tbody>${x.specs.map(r=>`<tr><td>${esc(r.label)}</td><td>${esc(r.value)}</td></tr>`).join('')}</tbody></table>`:''}<a class="btn o" href="#request">Заказать выезд</a></div></article>`).join('')};
 document.getElementById('eql').addEventListener('click',e=>{const p=e.target.closest('[data-e]');if(!p)return;const x=EQ[+p.dataset.e];if(x&&x.photo)openImg(x.photo,x.name)});
 const PERSON='<svg viewBox="0 0 100 100"><circle cx="50" cy="34" r="20"/><path d="M8 100c2-24 20-38 42-38s40 14 42 38z"/></svg>';
 const renderTeam=t=>{document.getElementById('teaml').innerHTML=t.map(p=>`<article class="tm"><div class="tph">${p.photo?`<img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy">`:PERSON}</div><div class="tb"><h3>${esc(p.name)}</h3><div class="trole">${esc(p.role)}</div>${p.text?`<p>${esc(p.text)}</p>`:''}</div></article>`).join('')};
