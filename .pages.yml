@@ -27,6 +27,17 @@ content:
       - { name: image, label: Фото, type: image }
       - { name: caption, label: Подпись, type: string }
 
+  - name: partners
+    label: Партнёры (лента логотипов)
+    type: file
+    path: content/partners.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Название компании, type: string }
+      - { name: logo, label: Логотип (лучше PNG на прозрачном фоне), type: image }
+      - { name: link, label: Сайт партнёра (необязательно), type: string }
+
   - name: equipment
     label: Спецтехника
     type: file
