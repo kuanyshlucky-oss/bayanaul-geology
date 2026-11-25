@@ -157,6 +157,14 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .soc.sm{gap:6px}.soc.sm a{width:30px;height:30px;border:0;background:transparent;color:#fff;border-radius:6px}.soc.sm a:hover{background:#ffffff1f;color:#fff}.soc.sm svg{width:16px;height:16px}
 .soc.dk a{background:#262b30;border-color:#31363b;color:#fff}
 .socl{margin-top:22px}.socl small{display:block;color:var(--mute);font-size:14px;margin-bottom:10px}
+/* карта */
+.map{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:0;border-radius:12px;overflow:hidden;border:1px solid #31363b;background:#22272c;margin-top:8px}
+.map .mi{padding:24px;display:flex;flex-direction:column;gap:10px}
+.map .mi b{color:#fff;font:700 18px Manrope,sans-serif}
+.map .mi a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;background:#2d3338;color:#fff;width:fit-content;font-size:15px}
+.map .mi a:hover{background:var(--red)}
+.map iframe{width:100%;height:100%;min-height:300px;border:0;display:block;filter:grayscale(.2)}
+@media(max-width:760px){.map{grid-template-columns:minmax(0,1fr)}}
 /* подвал */
 footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px}
@@ -279,6 +287,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
         <a href="tel:+77472792271"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small>Телефон, консультация</small><b>+7 747 279 22 71</b></span></a>
         <a href="https://wa.me/77472792271"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1.2-1.2 1.8.8v1.6c-3.6.3-7.7-3.8-7.4-7.4h1.6l.8 1.8z"/></svg></span><span><small>WhatsApp</small><b>Написать сообщение</b></span></a>
         <a href="https://www.instagram.com/bayanaul.geology/"><span class="ic"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></span><span><small>Instagram</small><b>@bayanaul.geology</b></span></a>
+        <a href="#map"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><small>Офис</small><b>Караганда, ул. Таттимбета, 10/2</b></span></a>
       </div>
       <div class="socl"><small>Мы в соцсетях</small><div class="soc" data-soc></div></div>
     </div>
@@ -318,7 +327,17 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
     </div>
     <div>
       <h4>Связь</h4>
-      <a href="tel:+77472792271">+7 747 279 22 71</a><a href="https://wa.me/77472792271">WhatsApp</a><div class="soc dk" data-soc style="margin-top:12px"></div>
+      <a href="tel:+77472792271">+7 747 279 22 71</a><a href="#map">Караганда, ул. Таттимбета, 10/2</a><a href="https://wa.me/77472792271">WhatsApp</a><div class="soc dk" data-soc style="margin-top:12px"></div>
+    </div>
+    <div class="map" id="map">
+      <div class="mi">
+        <h4 style="margin:0">Офис</h4>
+        <b>Караганда, ул. Таттимбета, 10/2</b>
+        <span>Работаем по всему Казахстану</span>
+        <a href="https://2gis.kz/karaganda/search/%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2">Открыть в 2ГИС</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2">Открыть в Google Картах</a>
+      </div>
+      <iframe title="Карта: Караганда, ул. Таттимбета, 10/2" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D0%B0%D1%82%D1%82%D0%B8%D0%BC%D0%B1%D0%B5%D1%82%D0%B0%2010%2F2&amp;z=16&amp;hl=ru&amp;output=embed"></iframe>
     </div>
     <div class="copy" id="yr"></div>
   </div>
