@@ -27,6 +27,25 @@ content:
       - { name: image, label: Фото, type: image }
       - { name: caption, label: Подпись, type: string }
 
+  - name: equipment
+    label: Спецтехника
+    type: file
+    path: content/equipment.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Название машины, type: string }
+      - { name: photo, label: Фото, type: image }
+      - { name: text, label: Для чего используется, type: text }
+      - { name: example, label: Пометка «Пример» (снимите, когда данные точные), type: boolean }
+      - name: specs
+        label: Характеристики
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Параметр (например Глубина бурения), type: string }
+          - { name: value, label: Значение (например до 100 м), type: string }
+
   - name: team
     label: Руководство
     type: file

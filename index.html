@@ -128,6 +128,23 @@ nav a.on{color:var(--red);background:#fdecec}
 @media(max-width:860px){.who{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:480px){.wl{grid-template-columns:minmax(0,1fr)}}
 
+/* спецтехника */
+.eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.eqc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.eqp{aspect-ratio:4/3;background:var(--bg2);position:relative;overflow:hidden;cursor:zoom-in}
+.eqp img{width:100%;height:100%;object-fit:cover;display:block}
+.eqb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.eqb h3{font-size:21px}
+.eqb>p{margin:0;color:var(--mute);font-size:16px}
+.eqt{width:100%;border-collapse:collapse;font-size:16px;margin:4px 0 6px}
+.eqt td{padding:10px 0;border-top:1px solid var(--line);vertical-align:top}
+.eqt td:first-child{color:var(--mute);padding-right:12px;white-space:nowrap}
+.eqt td:last-child{text-align:right;font-weight:600}
+.eqb .btn{margin-top:auto;align-self:flex-start}
+.eqbadge{position:absolute;left:12px;top:12px;background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:5px 10px;border-radius:6px}
+.eqnote{margin:20px 0 0;color:var(--mute);font-size:15px}
+@media(max-width:960px){.eq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.eq{grid-template-columns:minmax(0,1fr)}.eqt td:last-child{white-space:normal}}
 /* руководство */
 .team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
 .tm{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
@@ -295,6 +312,7 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
     <nav id="nav">
       <a href="#services" data-nav="services">Услуги</a>
       <a href="#works" data-nav="works">Объекты</a>
+      <a href="#equipment" data-nav="equipment">Спецтехника</a>
       <a href="#team" data-nav="team">Руководство</a>
       <a href="#awards" data-nav="awards">Достижения</a>
       <a href="#news" data-nav="news">Новости</a>
@@ -371,6 +389,15 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
       <p class="lead">Elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p>
     </div>
     <div class="wl" id="wl"></div>
+  </div>
+</section>
+
+<section class="band" id="equipment" data-pg="equipment">
+  <div class="wrap">
+    <div class="kicker">Спецтехника</div>
+    <div class="head"><h2>Наша техника</h2><p class="lead" style="margin:0">Собственные буровые установки и вездеходы. Выезжаем на объекты по всему Казахстану.</p></div>
+    <div class="eq" id="eql"></div>
+    <p class="eqnote" id="eqnote" hidden>Характеристики указаны для примера и будут уточнены.</p>
   </div>
 </section>
 
@@ -511,7 +538,7 @@ const sel=document.getElementById('f-svc');
 }
 /* Разделы-страницы: пункт меню показывает только свой раздел */
 {
-  const PAGES=['services','works','team','awards','news','request'];
+  const PAGES=['services','works','equipment','team','awards','news','request'];
   const secs=[...document.querySelectorAll('[data-pg]')],links=[...document.querySelectorAll('[data-nav]')],pn=document.getElementById('pgnav');
   const route=()=>{
     const h=decodeURIComponent(location.hash.slice(1));
@@ -592,13 +619,18 @@ const applySettings=st=>{
   document.querySelectorAll('[data-soc]').forEach(el=>el.innerHTML=h);
 };
 const J=p=>fetch(p,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
+let EQ=[];
+const renderEq=e=>{EQ=e;document.getElementById('eql').innerHTML=e.map((x,i)=>`<article class="eqc"><div class="eqp" data-e="${i}">${x.photo?`<img src="${esc(x.photo)}" alt="${esc(x.name)}" loading="lazy">`:''}${x.example?'<span class="eqbadge">Пример</span>':''}</div><div class="eqb"><h3>${esc(x.name)}</h3>${x.text?`<p>${esc(x.text)}</p>`:''}${(x.specs||[]).length?`<table class="eqt"><tbody>${x.specs.map(r=>`<tr><td>${esc(r.label)}</td><td>${esc(r.value)}</td></tr>`).join('')}</tbody></table>`:''}<a class="btn o" href="#request">Заказать выезд</a></div></article>`).join('');
+  document.getElementById('eqnote').hidden=!e.some(x=>x.example)};
+document.getElementById('eql').addEventListener('click',e=>{const p=e.target.closest('[data-e]');if(!p)return;const x=EQ[+p.dataset.e];if(x&&x.photo)openImg(x.photo,x.name)});
 const PERSON='<svg viewBox="0 0 100 100"><circle cx="50" cy="34" r="20"/><path d="M8 100c2-24 20-38 42-38s40 14 42 38z"/></svg>';
 const renderTeam=t=>{document.getElementById('teaml').innerHTML=t.map(p=>`<article class="tm"><div class="tph">${p.photo?`<img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy">`:PERSON}</div><div class="tb"><h3>${esc(p.name)}</h3><div class="trole">${esc(p.role)}</div>${p.text?`<p>${esc(p.text)}</p>`:''}</div></article>`).join('')};
 let AW=[];
 const CERT='<svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7.5 21l4.5-2.5 4.5 2.5L15 13.5"/></svg>';
 const renderAwards=a=>{AW=a;document.getElementById('awardl').innerHTML=a.map((x,i)=>`<button class="aw" data-a="${i}"${x.image?'':' style="cursor:default"'}><div class="aph">${x.image?`<img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy">`:`<div class="ph">${CERT}</div>`}</div><div class="ab"><b>${esc(x.title)}</b>${x.year?`<span>${esc(x.year)}</span>`:''}</div></button>`).join('')};
 document.getElementById('awardl').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const x=AW[+b.dataset.a];if(x&&x.image)openImg(x.image,[x.title,x.year].filter(Boolean).join(', '))});
-Promise.all([J('content/settings.json'),J('content/services.json'),J('content/gallery.json'),J('content/news.json'),J('content/team.json'),J('content/awards.json')]).then(([st,sv,gl,nw,tm,aw])=>{
+Promise.all([J('content/settings.json'),J('content/services.json'),J('content/gallery.json'),J('content/news.json'),J('content/team.json'),J('content/awards.json'),J('content/equipment.json')]).then(([st,sv,gl,nw,tm,aw,eq])=>{
+  if(Array.isArray(eq))renderEq(eq);
   if(Array.isArray(tm))renderTeam(tm);
   if(Array.isArray(aw))renderAwards(aw);
   if(st)applySettings(st);
