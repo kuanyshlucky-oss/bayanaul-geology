@@ -1,0 +1,22 @@
+[
+  {
+    "image": "media/drilling.jpg",
+    "caption": "Бурение на строительной площадке"
+  },
+  {
+    "image": "media/rig-base.jpg",
+    "caption": "Буровая установка на шнековом бурении"
+  },
+  {
+    "image": "media/rig-winter.jpg",
+    "caption": "Работаем и зимой"
+  },
+  {
+    "image": "media/water.jpg",
+    "caption": "Скважина на воду"
+  },
+  {
+    "image": "media/camp.jpg",
+    "caption": "Полевой лагерь в степи"
+  }
+]
