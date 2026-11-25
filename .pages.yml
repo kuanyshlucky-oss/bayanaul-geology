@@ -11,6 +11,7 @@ content:
     list: true
     fields:
       - { name: date, label: Дата, type: date }
+      - { name: tag, label: Метка (например Объект, Событие, Обучение), type: string }
       - { name: title, label: Заголовок, type: string }
       - { name: text, label: Текст, type: text }
       - { name: image, label: Фото (необязательно), type: image }
