@@ -132,7 +132,7 @@ nav a.on{color:var(--red);background:#fdecec}
 
 /* партнёры: бесконечная лента */
 .partners{padding-bottom:clamp(40px,5vw,72px)}
-.marq{margin-top:36px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq{margin-top:20px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mtrack{display:flex;gap:20px;width:max-content;animation:marq var(--mdur,40s) linear infinite;padding:6px 0}
 .marq:hover .mtrack{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(calc(-50% - 10px))}}
@@ -513,7 +513,7 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
   </div>
 </section>
 <section class="band grey partners" id="partners" data-pg="home services">
-  <div class="wrap"><div class="kicker">Партнёры</div><h2>Нам доверяют</h2></div>
+  <div class="wrap"><div class="kicker">Партнёры</div></div>
   <div class="marq" id="marq" aria-label="Логотипы партнёров"><div class="mtrack" id="mtrack"></div></div>
 </section>
 <div class="pgnav" id="pgnav" hidden><a class="btn o" href="#top">← На главную</a><a class="btn p" href="#request">Оставить заявку</a></div>
