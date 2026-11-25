@@ -418,6 +418,21 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
 }
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const sel=document.getElementById('f-svc');
+/* Телефон: ссылки на соцсети и карты открываются в приложениях.
+   Android — через intent с запасной ссылкой на сайт; iPhone — через универсальные ссылки (обычный переход в той же вкладке). */
+{
+  const APPS=[[/(^|\.)instagram\.com$/,'com.instagram.android'],[/^wa\.me$|(^|\.)whatsapp\.com$/,'com.whatsapp'],[/^t\.me$|^telegram\.me$/,'org.telegram.messenger'],
+    [/(^|\.)facebook\.com$|^fb\.com$/,'com.facebook.katana'],[/(^|\.)linkedin\.com$/,'com.linkedin.android'],[/(^|\.)2gis\.(kz|ru|com)$/,'ru.dublgis.dgismobile'],[/(^|\.)yandex\.(kz|ru)$/,'ru.yandex.yandexmaps']];
+  const isAnd=/Android/i.test(navigator.userAgent);
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="https://"]');if(!a||a.hasAttribute('data-soon')||e.defaultPrevented)return;
+    let u;try{u=new URL(a.href)}catch(_){return}
+    const app=APPS.find(([re])=>re.test(u.hostname));if(!app)return;
+    e.preventDefault();
+    if(isAnd){location.href='intent://'+u.host+u.pathname+u.search+u.hash+'#Intent;scheme=https;package='+app[1]+';S.browser_fallback_url='+encodeURIComponent(u.href)+';end'}
+    else location.href=u.href; /* та же вкладка: iOS сам откроет приложение, если оно установлено */
+  });
+}
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
  water:'<svg class="i" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>',
