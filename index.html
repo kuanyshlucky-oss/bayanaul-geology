@@ -296,6 +296,24 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
   .cta .btn{width:100%}
   .topbar{display:none}
 }
+
+/* Анимация карточек техники при наведении */
+.eqc{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.eqc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.eqp img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.eqp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgb(0 0 0/.28));opacity:0;transition:opacity .4s}
+.eqb h3{transition:color .3s}
+.eqt tr{transition:background .25s}
+@media(hover:hover){
+  .eqc:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgb(20 25 30/.16);border-color:transparent}
+  .eqc:hover::after{transform:scaleX(1)}
+  .eqc:hover .eqp img{transform:scale(1.07);filter:saturate(1.1) contrast(1.05)}
+  .eqc:hover .eqp::after{opacity:1}
+  .eqc:hover h3{color:var(--red)}
+  .eqt tr:hover{background:var(--bg2)}
+  .eqc:hover .btn.o{background:var(--red);border-color:var(--red);color:#fff}
+}
+@media(prefers-reduced-motion:reduce){.eqc,.eqc::after,.eqp img,.eqp::after{transition:none}.eqc:hover{transform:none}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
