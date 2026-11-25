@@ -349,9 +349,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font
         <div class="mbtns">
           <a class="g2" id="go2gis" href="https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>2ГИС</a>
           <a id="goYa" href="https://yandex.kz/maps/?pt=73.160842,49.795671&amp;z=17&amp;l=map">Яндекс Карты</a>
-          <a class="rt" id="goRoute" href="https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8z"/></svg>Построить маршрут</a>
         </div>
-        <button type="button" class="cpy" id="copyAddr"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span id="copied">Скопировать адрес</span></button>
       </div>
     </div>
     <div class="copy" id="yr"></div>
@@ -376,9 +374,8 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
 {
   const ua=navigator.userAgent,isAnd=/Android/i.test(ua);
   const web='https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671';
-  const route='https://2gis.kz/karaganda/directions/points/%7C73.160842%2C49.795671%3B11822584677072527';
   const intent=u=>'intent://'+u.replace('https://','')+'#Intent;scheme=https;package=ru.dublgis.dgismobile;S.browser_fallback_url='+encodeURIComponent(u)+';end';
-  if(isAnd){document.getElementById('go2gis').href=intent(web);document.getElementById('goRoute').href=intent(route)}
+  if(isAnd){document.getElementById('go2gis').href=intent(web);}
   if(window.L){try{
     const P=[49.795671,73.160842],mob=matchMedia('(max-width:760px)').matches;
     const m=L.map('lmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomControl:false,attributionControl:true}).setView(P,16);
@@ -388,8 +385,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');i
     L.marker(P,{icon:ic,title:'Bayanaul Geology'}).addTo(m).on('click',()=>{location.href=document.getElementById('go2gis').href});
     if(!mob)m.panBy([-200,0],{animate:false});
   }catch(e){}}
-  const cb=document.getElementById('copyAddr'),cp=document.getElementById('copied');
-  const def=cp.textContent;cb.addEventListener('click',async()=>{const t='Караганда, ул. Таттимбета, 10/2';try{await navigator.clipboard.writeText(t);cp.textContent='Адрес скопирован ✓';cb.classList.add('ok')}catch(e){cp.textContent=t}setTimeout(()=>{cp.textContent=def;cb.classList.remove('ok')},2500)});
+
 }
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
