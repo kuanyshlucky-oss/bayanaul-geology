@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bayanaul Geology</title>
 <meta name="description" content="Bayanaul Geology — инженерная геология, гидрогеология, геодезия и разведка ТПИ по всему Казахстану. Бурение скважин на воду. +7 747 279 22 71">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -138,7 +138,7 @@ nav a.on{color:var(--red);background:#fdecec}
 @keyframes marq{to{transform:translateX(calc(-50% - 10px))}}
 .plogo{flex:none;width:220px;height:110px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;padding:18px 24px;text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s}
 .plogo img{max-width:100%;max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
-.plogo span{font:800 22px Manrope,sans-serif;letter-spacing:.04em;color:#9aa1a8;text-transform:uppercase;transition:color .3s;text-align:center;line-height:1.1}
+.plogo span{font:800 22px Manrope,sans-serif;letter-spacing:.04em;color:#6b7279;text-transform:uppercase;transition:color .3s;text-align:center;line-height:1.1}
 .plogo:hover{border-color:var(--red);box-shadow:0 10px 26px rgb(20 25 30/.1);transform:translateY(-3px)}
 .plogo:hover img{filter:none;opacity:1}.plogo:hover span{color:var(--red)}
 @media(max-width:600px){.plogo{width:160px;height:84px}.plogo span{font-size:17px}}
@@ -227,7 +227,7 @@ nav a.on{color:var(--red);background:#fdecec}
 .cl a{display:flex;gap:14px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .cl a:hover{border-color:var(--red)}
 .cl .ic{width:42px;height:42px;border-radius:8px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
-.cl small{display:block;color:var(--mute);font-size:13px}.cl b{font-weight:600;white-space:nowrap}
+.cl small{display:block;color:var(--mute);font-size:13px}.cl b{font-weight:600;overflow-wrap:anywhere}
 .fcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,36px);box-shadow:0 14px 40px rgb(20 25 30/.06)}
 .form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .form label{display:grid;gap:6px;font-size:14px;font-weight:600}
@@ -265,7 +265,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .mbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .mbtns a,.mbtns button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:8px;font:600 14px Inter,sans-serif;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;padding:0 10px}
 .mbtns a:hover,.mbtns button:hover{border-color:var(--ink)}
-.mbtns .g2{background:#1ba136;border-color:#1ba136;color:#fff}.mbtns .g2:hover{background:#158a2d;border-color:#158a2d}
+.mbtns .g2 svg{color:#13803f}
 .mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
 .mbtns svg{width:18px;height:18px;flex:none}
 .cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px Inter,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
@@ -287,7 +287,7 @@ body{font-size:17px;line-height:1.65}
 .lead,.hero p.lead{font-size:18px}
 .btn{min-height:56px;padding:0 28px;font-size:17px;border-radius:10px}
 .btn svg{width:22px;height:22px;flex:none}
-.btn.wa{background:#1fa855;color:#fff}.btn.wa:hover{background:#178a45}
+.btn.wa{background:#13803f;color:#fff}.btn.wa:hover{background:#0f6c35}
 .btn.o{border-width:2px}
 nav a{font-size:16px;color:#2c3238;padding:12px 14px}
 .bar .btn{min-height:48px;font-size:16px}
@@ -349,6 +349,72 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 }
 @media(prefers-reduced-motion:reduce){.nfeat,.ncard,.tm,.aw,.nfeat::after,.ncard::after,.tm::after,.aw::after,.nimg img,.tph img,.aph img,.aph .ph{transition:none}.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:none}}
 
+
+/* ===== Полировка по навыкам: Taste Skill, mobile-native, emil-design-eng ===== */
+:root{--eo:cubic-bezier(0.23,1,0.32,1)}
+/* телефон: без серой вспышки и задержки нажатия, без выделения текста кнопок */
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+a,button,[role=button],summary,label{touch-action:manipulation}
+.btn,button,.soc a,.mbar a,nav a{-webkit-user-select:none;user-select:none}
+/* отклик на нажатие */
+.btn,.soc a,.cl a,.mbtns a,.plogo,.menu{transition:transform 160ms var(--eo),background 200ms ease,border-color 200ms ease,color 200ms ease,box-shadow 200ms ease}
+.btn:active,.soc a:active,.mbtns a:active,.menu:active{transform:scale(.97)}
+.cl a:active,.ncard:active,.nfeat:active,.aw:active,.eqc:active{transform:scale(.985)}
+/* видимый фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red2);outline-offset:3px;border-radius:10px}
+/* читаемые подписи */
+.kicker{color:#c8161c}
+p{text-wrap:pretty}
+/* наведение: быстрее и мягче (≤ 300 мс, сильный ease-out) */
+.card,.nfeat,.ncard,.tm,.aw,.eqc,.plogo,.cl a{transition:transform 250ms var(--eo),box-shadow 250ms var(--eo),border-color 200ms ease}
+.gal img,.nimg img,.tph img,.eqp img,.aph img,.aph .ph{transition:transform 300ms var(--eo),filter 300ms ease}
+.nfeat::after,.ncard::after,.tm::after,.aw::after,.eqc::after{transition:transform 300ms var(--eo)}
+@media(hover:hover) and (pointer:fine){
+  .eqc:hover,.ncard:hover,.tm:hover,.aw:hover{transform:translateY(-4px)}
+  .nfeat:hover{transform:translateY(-3px)}
+  .plogo:hover{transform:translateY(-2px)}
+  .eqc:hover .eqp img,.nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img,.gal figure:hover img{transform:scale(1.03)}
+  .aw:hover .aph img,.aw:hover .aph .ph{transform:scale(1.03) rotate(-1deg)}
+}
+/* сенсорные экраны: никаких «залипших» наведений */
+@media(hover:none),(pointer:coarse){
+  .card:hover,.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover,.eqc:hover,.plogo:hover{transform:none;box-shadow:none;border-color:var(--line)}
+  .nfeat:hover::after,.ncard:hover::after,.tm:hover::after,.aw:hover::after,.eqc:hover::after{transform:scaleX(0)}
+  .gal figure:hover img,.nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img,.eqc:hover .eqp img,.aw:hover .aph img,.aw:hover .aph .ph{transform:none;filter:none}
+  .nfeat:hover h3,.ncard:hover h3,.tm:hover h3,.aw:hover b,.eqc:hover h3,.plogo:hover span{color:inherit}
+  .plogo:hover img{filter:grayscale(1);opacity:.75}
+  .btn.p:hover{background:var(--red)}.btn.wa:hover{background:#13803f}.btn.o:hover,.card a.more:hover{border-color:var(--line);color:var(--ink)}
+  .eqc:hover .btn.o{background:#fff;border-color:var(--line);color:var(--ink)}
+  .cl a:hover,.mbtns a:hover{border-color:var(--line)}
+  .soc a:hover{background:#fff;border-color:var(--line);color:var(--ink)}
+  .soc.dk a:hover{background:#262b30;border-color:#31363b;color:#fff}
+  .soc.sm a:hover{background:transparent}
+}
+/* окно новости и увеличенное фото: плавное появление, уход быстрее */
+.nm,.lb{display:flex;opacity:0;visibility:hidden;transition:opacity 150ms ease,visibility 0s linear 150ms}
+.nm.open,.lb.open{opacity:1;visibility:visible;transition:opacity 220ms var(--eo)}
+.nmb,.lb img{transform:scale(.96);transition:transform 150ms ease}
+.nm.open .nmb,.lb.open img{transform:none;transition:transform 260ms var(--eo)}
+/* удобные зоны нажатия */
+.logo{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:860px){
+  nav{display:flex!important;opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;transition:opacity 150ms ease,transform 150ms ease,visibility 0s linear 150ms}
+  nav.open{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity 200ms var(--eo),transform 200ms var(--eo)}
+  footer a{display:flex;align-items:center;min-height:44px;padding:0}
+}
+/* нижняя панель на телефоне: в экран на любой ширине и над полоской iPhone */
+@media(max-width:600px){
+  .mbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px))}
+  .mbar .btn{padding:0 8px;min-width:0;font-size:16px;gap:6px}
+  body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:360px){.mbar .btn svg{display:none}}
+@media(prefers-reduced-motion:reduce){
+  .nm,.lb,.nmb,.lb img,nav{transition:opacity 150ms ease!important;transform:none!important}
+  .btn:active,.soc a:active,.mbtns a:active,.cl a:active,.ncard:active,.nfeat:active,.aw:active,.eqc:active{transform:none}
+}
+.topbar a:focus-visible,footer a:focus-visible,.soc.dk a:focus-visible,.mapw a:focus-visible{outline-color:#fff}
+.mcard a:focus-visible{outline-color:var(--red2)}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
@@ -379,7 +445,6 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 <section class="hero" data-pg="home">
   <div class="wrap">
     <div>
-      <div class="kicker">Bayanaul Geology</div>
       <h1>Геология, гидрогеология и геодезия</h1>
       <p class="lead">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud.</p>
       <div class="cta">
@@ -402,7 +467,6 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 
 <section class="band grey" id="services" data-pg="home services">
   <div class="wrap">
-    <div class="kicker">Услуги</div>
     <h2>Что мы делаем</h2>
     <div class="cards" id="cards"></div>
   </div>
@@ -480,7 +544,6 @@ input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-c
 <section class="band req" id="request" data-pg="home request">
   <div class="wrap">
     <div>
-      <div class="kicker">Контакты</div>
       <h2>Оставьте заявку</h2>
       <p class="lead">Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate.</p>
       <div class="cl">
