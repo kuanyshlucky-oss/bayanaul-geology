@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Макет — Bayanaul Geology</title>
+<meta name="description" content="Bayanaul Geology — инженерная геология, гидрогеология, геодезия и разведка ТПИ по всему Казахстану. Бурение скважин на воду. +7 747 279 22 71">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="media/icon-192.png">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<meta name="theme-color" content="#e31e24">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..600&family=Jost:wght@400..600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: солидная инженерная компания — спокойно, точно, по делу
+   IDEA: корпоративный буклет изыскательской фирмы: белая бумага, строгая сетка, фото с объектов
+   PICTURE: крупное фото скважины, из которой пошла вода, + видео
+   COLOUR and TYPE: белый и светло-серый, графит #1f2328, красный логотипа #e31e24 как единственный акцент; "Jost" + Inter
+   LAYOUT: верхняя полоса контактов, шапка, герой текст/фото, 4 карточки услуг, фото-лента, объекты, этапы, заказчики, новости, заявка, тёмный подвал */
+:root{color-scheme:light;--bg:#fff;--bg2:#f5f6f7;--ink:#1f2328;--mute:#5d646c;--line:#e3e6e9;--red:#e31e24;--red2:#c4141a;--dark:#1b1f23}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Jost",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Jost",system-ui,sans-serif;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(34px,4.6vw,54px);font-weight:800}
+h2{font-size:clamp(28px,3.2vw,40px);font-weight:800}
+h3{font-size:20px;font-weight:700}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1200px;margin:0 auto}
+.band{padding:clamp(56px,7vw,96px) max(4vw,16px)}
+.grey{background:var(--bg2)}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;color:var(--red);margin-bottom:14px}
+.kicker::before{content:"";width:28px;height:2px;background:var(--red)}
+.lead{font-size:17px;color:var(--mute);max-width:60ch;margin:14px 0 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:8px;font:600 16px "Jost",system-ui,sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
+.btn.p{background:var(--red);color:#fff}.btn.p:hover{background:var(--red2)}
+.btn.o{border-color:var(--line);background:#fff;color:var(--ink)}.btn.o:hover{border-color:var(--ink)}
+.btn.wa{background:#25d366;color:#08311a}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+svg.i{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* верхняя полоса и шапка */
+.topbar{background:var(--dark);color:#c9cdd1;font-size:14px}
+.topbar .wrap{display:flex;gap:8px 28px;align-items:center;justify-content:flex-end;flex-wrap:wrap;padding:8px max(4vw,16px);max-width:none}
+.topbar a{text-decoration:none;color:#fff}.topbar span{white-space:nowrap}
+header{position:sticky;top:0;z-index:30;background:rgb(255 255 255/.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;padding:12px max(4vw,16px);max-width:1280px;margin:0 auto}
+.logo img{height:36px;display:block}
+nav{display:flex;gap:2px;margin-left:auto}
+nav a{text-decoration:none;font-weight:500;font-size:15px;padding:10px 12px;border-radius:6px;color:var(--mute)}nav a:hover{color:var(--ink);background:var(--bg2)}
+nav a.on{color:var(--red);background:#fdecec}
+[data-pg].off{display:none}
+.pgnav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:0 max(4vw,16px) clamp(48px,6vw,80px)}
+.pgnav[hidden]{display:none}
+@media(min-width:861px){.pgnav{display:none}}
+.bar .btn{min-height:44px;padding:0 18px;font-size:15px}
+.menu{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;color:var(--ink)}
+@media(max-width:1060px){.bar .btn{display:none}}
+@media(max-width:860px){.menu{display:grid;place-items:center;margin-left:auto}nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;padding:8px max(4vw,16px) 16px;border-bottom:1px solid var(--line)}nav.open{display:flex}.logo img{height:30px}}
+
+/* герой */
+.hero{padding:clamp(40px,5vw,72px) max(4vw,16px) clamp(48px,6vw,80px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero p.lead{font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:40px;border-top:1px solid var(--line)}
+.facts div{padding:18px 16px 0 0}
+.facts b{display:block;font:800 22px "Jost",system-ui,sans-serif}
+.facts span{font-size:14px;color:var(--mute)}
+.hpic{position:relative;aspect-ratio:4/4.4;border-radius:14px;overflow:hidden;background:var(--bg2)}
+.hpic>img{width:100%;height:100%;object-fit:cover;display:block}
+.vcard{position:absolute;left:-1px;bottom:-1px;width:42%;aspect-ratio:9/14;border:6px solid #fff;border-radius:0 14px 0 14px;overflow:hidden;background:#222;box-shadow:0 10px 30px rgb(0 0 0/.25)}
+.vcard video{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;right:16px;top:16px;background:#fff;border-radius:10px;padding:10px 14px;font-size:14px;font-weight:600;box-shadow:0 6px 20px rgb(0 0 0/.15);display:flex;gap:8px;align-items:center}
+.badge i{width:9px;height:9px;border-radius:50%;background:var(--red);display:block}
+@media(max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hpic{aspect-ratio:4/3.4}.vcard{width:34%}}
+@media(max-width:520px){.facts{grid-template-columns:minmax(0,1fr)}.facts div{padding-top:12px}}
+
+/* услуги */
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .25s,border-color .25s}
+.card:hover{border-color:#cfd3d7;box-shadow:0 14px 34px rgb(20 25 30/.08)}
+.card .ic{width:52px;height:52px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center}
+.card .ic svg{width:28px;height:28px}
+.card p{margin:0;color:var(--mute)}
+.card ul{list-style:none;margin:4px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;font-size:15px}
+.card li{position:relative;padding-left:16px}.card li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;background:var(--red);border-radius:1px}
+.card a.more{margin-top:auto;font-weight:600;color:var(--red);text-decoration:none;padding-top:6px}
+@media(max-width:820px){.cards{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){.card{padding:22px}.card ul{grid-template-columns:minmax(0,1fr)}}
+
+/* фото-лента */
+.strip{position:relative;min-height:420px;display:flex;align-items:flex-end;color:#fff;background:#333 center/cover no-repeat}
+.strip::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(15 18 20/.82),rgb(15 18 20/.35) 70%,rgb(15 18 20/.1))}
+.strip .wrap{position:relative;width:100%;padding:clamp(40px,6vw,72px) max(4vw,16px)}
+.strip h2{max-width:16ch}
+.strip p{color:#dfe2e5;max-width:52ch;font-size:17px;margin:14px 0 0}
+
+/* объекты */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:230px;gap:16px;margin-top:40px}
+.gal figure{margin:0;position:relative;border-radius:12px;overflow:hidden;background:var(--bg2);cursor:zoom-in}
+.gal img,.gal video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;right:12px;width:fit-content;max-width:calc(100% - 24px);background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:7px 12px;border-radius:8px}
+.gal .w2{grid-column:span 2}.gal .h2{grid-row:span 2}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:210px}}
+@media(max-width:520px){.gal{grid-template-columns:minmax(0,1fr);grid-auto-rows:250px}.gal .w2{grid-column:auto}}
+.lb{position:fixed;inset:0;z-index:60;background:rgb(12 14 16/.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.lb.open{display:flex}.lb img{max-width:100%;max-height:82vh;border-radius:8px}.lb p{color:#eee;margin:12px 0 0}
+.lbx{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;font-size:20px;cursor:pointer}
+
+/* этапы */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:44px;position:relative}
+.steps::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:2px;background:var(--line)}
+.step{position:relative}
+.step .n{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--red);color:var(--red);display:grid;place-items:center;font:800 18px "Jost",system-ui,sans-serif;position:relative}
+.step h3{margin-top:18px}.step p{margin:8px 0 0;color:var(--mute);font-size:15px}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps::before{display:none}}
+@media(max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* заказчики */
+.who{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.wl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wl div{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-weight:500}
+.wl svg{color:var(--red)}
+@media(max-width:860px){.who{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){.wl{grid-template-columns:minmax(0,1fr)}}
+
+/* партнёры: бесконечная лента */
+.partners{padding-bottom:clamp(40px,5vw,72px)}
+.marq{margin-top:20px;overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mtrack{display:flex;gap:20px;width:max-content;animation:marq var(--mdur,40s) linear infinite;padding:6px 0}
+.marq:hover .mtrack{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(calc(-50% - 10px))}}
+.plogo{flex:none;width:220px;height:110px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;padding:18px 24px;text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s}
+.plogo img{max-width:100%;max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
+.plogo span{font:800 22px "Jost",system-ui,sans-serif;letter-spacing:.04em;color:#6b7279;text-transform:uppercase;transition:color .3s;text-align:center;line-height:1.1}
+.plogo:hover{border-color:var(--red);box-shadow:0 10px 26px rgb(20 25 30/.1);transform:translateY(-3px)}
+.plogo:hover img{filter:none;opacity:1}.plogo:hover span{color:var(--red)}
+@media(max-width:600px){.plogo{width:160px;height:84px}.plogo span{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.marq{-webkit-mask-image:none;mask-image:none}}
+/* спецтехника */
+.eq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.eqc{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.eqp{aspect-ratio:4/3;background:var(--bg2);position:relative;overflow:hidden;cursor:zoom-in}
+.eqp img{width:100%;height:100%;object-fit:cover;display:block}
+.eqb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.eqb h3{font-size:21px}
+.eqb>p{margin:0;color:var(--mute);font-size:16px}
+.eqt{width:100%;border-collapse:collapse;font-size:16px;margin:4px 0 6px}
+.eqt td{padding:10px 0;border-top:1px solid var(--line);vertical-align:top}
+.eqt td:first-child{color:var(--mute);padding-right:12px;white-space:nowrap}
+.eqt td:last-child{text-align:right;font-weight:600}
+.eqb .btn{margin-top:auto;align-self:flex-start}
+.eqbadge{position:absolute;left:12px;top:12px;background:#fff;color:var(--ink);font-size:14px;font-weight:600;padding:5px 10px;border-radius:6px}
+.eqnote{margin:20px 0 0;color:var(--mute);font-size:15px}
+@media(max-width:960px){.eq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.eq{grid-template-columns:minmax(0,1fr)}.eqt td:last-child{white-space:normal}}
+/* руководство */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.tm{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tph{aspect-ratio:4/4.4;background:linear-gradient(160deg,#eef0f2,#dfe3e7);position:relative;overflow:hidden}
+.tph img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.tph svg{position:absolute;left:50%;bottom:0;width:62%;transform:translateX(-50%);fill:#c5cbd1}
+.tb{padding:20px 22px 24px;display:grid;gap:6px}
+.tb h3{font-size:20px}
+.trole{color:var(--red2);font-weight:600;font-size:15px}
+.tb p{margin:6px 0 0;color:var(--mute);font-size:15px}
+@media(max-width:900px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.team{grid-template-columns:minmax(0,1fr)}}
+/* достижения */
+.awards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:40px}
+.aw{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:zoom-in;text-align:left;padding:0;font:inherit;color:inherit;display:flex;flex-direction:column;transition:box-shadow .25s,border-color .25s}
+.aw:hover{border-color:#cfd3d7;box-shadow:0 14px 34px rgb(20 25 30/.08)}
+.aph{aspect-ratio:3/4;background:var(--bg2);display:grid;place-items:center;padding:14px}
+.aph img{width:100%;height:100%;object-fit:contain;display:block;box-shadow:0 4px 14px rgb(0 0 0/.12);background:#fff}
+.aph .ph{width:72%;aspect-ratio:3/4;background:#fff;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;box-shadow:0 4px 14px rgb(0 0 0/.08)}
+.aph .ph svg{width:42%;stroke:var(--red);fill:none;stroke-width:1.6}
+.ab{padding:14px 16px 16px;display:grid;gap:4px}
+.ab b{font:700 16px/1.3 "Jost",system-ui,sans-serif}
+.ab span{font-size:14px;color:var(--mute)}
+@media(max-width:900px){.awards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.awards{grid-template-columns:minmax(0,1fr)}}
+/* новости */
+.nwrap{margin-top:40px;display:grid;gap:24px}
+.nfeat{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,border-color .25s;text-align:left;padding:0;font:inherit;color:inherit}
+.nfeat:hover,.ncard:hover{border-color:#cfd3d7;box-shadow:0 14px 34px rgb(20 25 30/.08)}
+.nfeat .nimg{aspect-ratio:16/10;height:100%}
+.nfeat .nb{padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:12px;justify-content:center}
+.nfeat h3{font-size:clamp(22px,2.4vw,30px)}
+.nfeat p{font-size:16px;-webkit-line-clamp:4}
+.ngrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ncard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:box-shadow .25s,border-color .25s;text-align:left;padding:0;font:inherit;color:inherit}
+.ncard .nimg{aspect-ratio:16/10}
+.ncard .nb{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ncard h3{font-size:18px}
+.nimg{position:relative;overflow:hidden;background:var(--bg2)}
+.nimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.nfeat:hover .nimg img,.ncard:hover .nimg img{transform:scale(1.04)}
+.ncover{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(circle at 70% 20%,#ffffff14,transparent 60%),linear-gradient(135deg,#23282d,#3a1517)}
+.ncover img{width:22%;max-width:90px;height:auto;opacity:.95;transform:none!important}
+.nmeta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.ntag{background:#fdecec;color:var(--red2);font-weight:600;font-size:13px;padding:3px 10px;border-radius:999px}
+.nb p{margin:0;color:var(--mute);font-size:15px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.nmore{margin-top:auto;padding-top:4px;font-weight:600;color:var(--red);font-size:15px}
+.nall{justify-self:center}
+@media(max-width:900px){.nfeat{grid-template-columns:minmax(0,1fr)}.ngrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.ngrid{grid-template-columns:minmax(0,1fr)}}
+.nm{position:fixed;inset:0;z-index:70;background:rgb(12 14 16/.7);display:none;align-items:center;justify-content:center;padding:20px}
+.nm.open{display:flex}
+.nmb{background:#fff;border-radius:14px;max-width:760px;width:100%;max-height:calc(100vh - 40px);overflow:auto;position:relative}
+.nmb .nimg{aspect-ratio:16/9}
+.nmc{padding:clamp(20px,3vw,32px);display:grid;gap:12px}
+.nmc h3{font-size:clamp(22px,2.6vw,28px)}
+.nmc .txt{color:var(--ink);font-size:16px;white-space:pre-line;margin:0}
+.nmx{position:absolute;top:12px;right:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 10px rgb(0 0 0/.2);font-size:18px;cursor:pointer}
+/* заявка */
+.req .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:stretch}
+.fcard{display:flex;flex-direction:column}
+.fcard .form{flex:1;grid-template-rows:auto auto 1fr auto}
+.form .grow{display:flex;flex-direction:column}.form .grow textarea{flex:1}
+.cl{display:grid;gap:14px;margin-top:28px}
+.cl a{display:flex;gap:14px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.cl a:hover{border-color:var(--red)}
+.cl .ic{width:42px;height:42px;border-radius:8px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
+.cl small{display:block;color:var(--mute);font-size:13px}.cl b{font-weight:600;overflow-wrap:anywhere}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,36px);box-shadow:0 14px 40px rgb(20 25 30/.06)}
+.form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.form label{display:grid;gap:6px;font-size:14px;font-weight:600}
+.form .full{grid-column:1/-1}
+input,select,textarea{font:16px "Jost",system-ui,sans-serif;padding:12px 14px;min-height:50px;border-radius:8px;border:1px solid #cfd4d9;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:-1px;border-color:var(--red)}
+.act{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.err{color:var(--red2);font-size:14px}
+.ok{display:none;margin-top:18px;background:#f0faf3;border:1px solid #bfe6cb;border-radius:10px;padding:16px 18px}
+.ok.show{display:block}
+.ok .act{margin-top:12px}
+@media(max-width:900px){.req .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.form{grid-template-columns:minmax(0,1fr)}}
+
+/* соцсети */
+.soc{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.soc a{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.soc a:hover{background:var(--red);border-color:var(--red);color:#fff}
+.soc svg{width:20px;height:20px;fill:currentColor}
+.soc.sm{gap:6px}.soc.sm a{width:30px;height:30px;border:0;background:transparent;color:#fff;border-radius:6px}.soc.sm a:hover{background:#ffffff1f;color:#fff}.soc.sm svg{width:16px;height:16px}
+.soc.dk a{background:#262b30;border-color:#31363b;color:#fff}
+.socl{margin-top:22px}.socl small{display:block;color:var(--mute);font-size:14px;margin-bottom:10px}
+/* карта */
+.mapw{grid-column:1/-1;position:relative;border-radius:14px;overflow:hidden;background:#22272c;border:1px solid #31363b;margin-top:8px;min-height:420px}
+.lmap{position:absolute;inset:0;background:#e9e6df;z-index:1}
+.lmap .leaflet-control-attribution{font-size:11px}
+.dpin{width:34px;height:46px;filter:drop-shadow(0 4px 6px rgb(0 0 0/.35))}
+.mcard{position:relative;z-index:2;margin:24px;width:min(380px,calc(100% - 48px));background:#fff;color:var(--ink);border-radius:12px;padding:22px;box-shadow:0 14px 40px rgb(0 0 0/.3);display:grid;gap:14px}
+.mcard .t{display:flex;gap:12px;align-items:flex-start}
+.mcard .pin{width:40px;height:40px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
+.mcard small{display:block;color:var(--mute);font-size:13px}
+.mcard b{display:block;font:800 19px/1.25 "Jost",system-ui,sans-serif;color:var(--ink)}
+.mcard .sub{font-size:14px;color:var(--mute);margin-top:2px}
+.mbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mbtns a,.mbtns button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:8px;font:600 14px "Jost",system-ui,sans-serif;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;padding:0 10px}
+.mbtns a:hover,.mbtns button:hover{border-color:var(--ink)}
+.mbtns .g2 svg{color:#13803f}
+.mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
+.mbtns svg{width:18px;height:18px;flex:none}
+.cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px "Jost",system-ui,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
+@media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.lmap{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
+/* подвал */
+footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px}
+footer img{height:34px;background:#fff;padding:6px 10px;border-radius:6px}
+footer h4{color:#fff;font:700 16px "Jost",system-ui,sans-serif;margin:0 0 12px}
+footer a{color:#e6e8ea;text-decoration:none;display:block;padding:3px 0}footer a:hover{color:#fff}
+footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font-size:14px}
+@media(max-width:760px){footer .wrap{grid-template-columns:minmax(0,1fr)}}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gal img{transition:none}}
+
+/* === Удобство для всех возрастов: крупнее, контрастнее, проще === */
+:root{--mute:#454c54}
+body{font-size:17px;line-height:1.65}
+.lead,.hero p.lead{font-size:18px}
+.btn{min-height:56px;padding:0 28px;font-size:17px;border-radius:10px}
+.btn svg{width:22px;height:22px;flex:none}
+.btn.wa{background:#13803f;color:#fff}.btn.wa:hover{background:#0f6c35}
+.btn.o{border-width:2px}
+nav a{font-size:16px;color:#2c3238;padding:12px 14px}
+.bar .btn{min-height:48px;font-size:16px}
+.card p,.step p,.ni p,.nb p,.tb p{font-size:16px}
+.card ul{font-size:16px}
+.card a.more{margin-top:auto;align-self:flex-start;color:var(--ink);min-height:50px;font-size:16px}
+.card a.more:hover{border-color:var(--red);color:var(--red)}
+.facts span,.cl small,.ab span,.nmeta,.trole{font-size:15px}
+.form label{font-size:16px}
+input,select,textarea{min-height:56px;font-size:17px;border-width:1.5px;border-color:#b9c0c7}
+.gal figcaption{font-size:15px}
+.mbar{display:none}
+@media(max-width:860px){
+  nav a{font-size:18px;padding:14px 12px;border-bottom:1px solid var(--line);border-radius:0}
+  .menu{width:52px;height:52px}
+}
+@media(max-width:600px){
+  body{padding-bottom:84px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgb(255 255 255/.97);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgb(0 0 0/.08)}
+  .mbar .btn{min-height:54px;padding:0 10px;font-size:17px}
+  .cta .btn{width:100%}
+  .topbar{display:none}
+}
+
+/* Анимация карточек техники при наведении */
+.eqc{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.eqc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.eqp img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.eqp::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgb(0 0 0/.28));opacity:0;transition:opacity .4s}
+.eqb h3{transition:color .3s}
+.eqt tr{transition:background .25s}
+@media(hover:hover){
+  .eqc:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgb(20 25 30/.16);border-color:transparent}
+  .eqc:hover::after{transform:scaleX(1)}
+  .eqc:hover .eqp img{transform:scale(1.07);filter:saturate(1.1) contrast(1.05)}
+  .eqc:hover .eqp::after{opacity:1}
+  .eqc:hover h3{color:var(--red)}
+  .eqt tr:hover{background:var(--bg2)}
+  .eqc:hover .btn.o{background:var(--red);border-color:var(--red);color:#fff}
+}
+@media(prefers-reduced-motion:reduce){.eqc,.eqc::after,.eqp img,.eqp::after{transition:none}.eqc:hover{transform:none}}
+
+/* Анимация при наведении: новости, руководство, достижения */
+.nfeat,.ncard,.tm,.aw{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.nfeat::after,.ncard::after,.tm::after,.aw::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1);z-index:2}
+.nimg img,.tph img,.aph img,.aph .ph{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.nfeat h3,.ncard h3,.tm h3,.aw b,.nmore{transition:color .3s,letter-spacing .3s}
+.tph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgb(0 0 0/.25));opacity:0;transition:opacity .4s}
+.nmore{display:inline-flex;gap:6px}
+@media(hover:hover){
+  .nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgb(20 25 30/.16);border-color:transparent}
+  .nfeat:hover{transform:translateY(-6px)}
+  .nfeat:hover::after,.ncard:hover::after,.tm:hover::after,.aw:hover::after{transform:scaleX(1)}
+  .nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img{transform:scale(1.07);filter:saturate(1.1) contrast(1.05)}
+  .tm:hover .tph::after{opacity:1}
+  .aw:hover .aph img,.aw:hover .aph .ph{transform:scale(1.05) rotate(-1.2deg)}
+  .nfeat:hover h3,.ncard:hover h3,.tm:hover h3,.aw:hover b{color:var(--red)}
+  .nfeat:hover .nmore,.ncard:hover .nmore{letter-spacing:.02em}
+}
+@media(prefers-reduced-motion:reduce){.nfeat,.ncard,.tm,.aw,.nfeat::after,.ncard::after,.tm::after,.aw::after,.nimg img,.tph img,.aph img,.aph .ph{transition:none}.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover{transform:none}}
+
+
+/* ===== Полировка по навыкам: Taste Skill, mobile-native, emil-design-eng ===== */
+:root{--eo:cubic-bezier(0.23,1,0.32,1)}
+/* телефон: без серой вспышки и задержки нажатия, без выделения текста кнопок */
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+a,button,[role=button],summary,label{touch-action:manipulation}
+.btn,button,.soc a,.mbar a,nav a{-webkit-user-select:none;user-select:none}
+/* отклик на нажатие */
+.btn,.soc a,.cl a,.mbtns a,.plogo,.menu{transition:transform 160ms var(--eo),background 200ms ease,border-color 200ms ease,color 200ms ease,box-shadow 200ms ease}
+.btn:active,.soc a:active,.mbtns a:active,.menu:active{transform:scale(.97)}
+.cl a:active,.ncard:active,.nfeat:active,.aw:active,.eqc:active{transform:scale(.985)}
+/* видимый фокус с клавиатуры */
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--red2);outline-offset:3px;border-radius:10px}
+/* читаемые подписи */
+.kicker{color:#c8161c}
+p{text-wrap:pretty}
+/* наведение: быстрее и мягче (≤ 300 мс, сильный ease-out) */
+.card,.nfeat,.ncard,.tm,.aw,.eqc,.plogo,.cl a{transition:transform 250ms var(--eo),box-shadow 250ms var(--eo),border-color 200ms ease}
+.gal img,.nimg img,.tph img,.eqp img,.aph img,.aph .ph{transition:transform 300ms var(--eo),filter 300ms ease}
+.nfeat::after,.ncard::after,.tm::after,.aw::after,.eqc::after{transition:transform 300ms var(--eo)}
+@media(hover:hover) and (pointer:fine){
+  .eqc:hover,.ncard:hover,.tm:hover,.aw:hover{transform:translateY(-4px)}
+  .nfeat:hover{transform:translateY(-3px)}
+  .plogo:hover{transform:translateY(-2px)}
+  .eqc:hover .eqp img,.nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img,.gal figure:hover img{transform:scale(1.03)}
+  .aw:hover .aph img,.aw:hover .aph .ph{transform:scale(1.03) rotate(-1deg)}
+}
+/* сенсорные экраны: никаких «залипших» наведений */
+@media(hover:none),(pointer:coarse){
+  .card:hover,.nfeat:hover,.ncard:hover,.tm:hover,.aw:hover,.eqc:hover,.plogo:hover{transform:none;box-shadow:none;border-color:var(--line)}
+  .nfeat:hover::after,.ncard:hover::after,.tm:hover::after,.aw:hover::after,.eqc:hover::after{transform:scaleX(0)}
+  .gal figure:hover img,.nfeat:hover .nimg img,.ncard:hover .nimg img,.tm:hover .tph img,.eqc:hover .eqp img,.aw:hover .aph img,.aw:hover .aph .ph{transform:none;filter:none}
+  .nfeat:hover h3,.ncard:hover h3,.tm:hover h3,.aw:hover b,.eqc:hover h3,.plogo:hover span{color:inherit}
+  .plogo:hover img{filter:grayscale(1);opacity:.75}
+  .btn.p:hover{background:var(--red)}.btn.wa:hover{background:#13803f}.btn.o:hover,.card a.more:hover{border-color:var(--line);color:var(--ink)}
+  .eqc:hover .btn.o{background:#fff;border-color:var(--line);color:var(--ink)}
+  .cl a:hover,.mbtns a:hover{border-color:var(--line)}
+  .soc a:hover{background:#fff;border-color:var(--line);color:var(--ink)}
+  .soc.dk a:hover{background:#262b30;border-color:#31363b;color:#fff}
+  .soc.sm a:hover{background:transparent}
+}
+/* окно новости и увеличенное фото: плавное появление, уход быстрее */
+.nm,.lb{display:flex;opacity:0;visibility:hidden;transition:opacity 150ms ease,visibility 0s linear 150ms}
+.nm.open,.lb.open{opacity:1;visibility:visible;transition:opacity 220ms var(--eo)}
+.nmb,.lb img{transform:scale(.96);transition:transform 150ms ease}
+.nm.open .nmb,.lb.open img{transform:none;transition:transform 260ms var(--eo)}
+/* удобные зоны нажатия */
+.logo{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:860px){
+  nav{display:flex!important;opacity:0;visibility:hidden;transform:translateY(-6px);pointer-events:none;transition:opacity 150ms ease,transform 150ms ease,visibility 0s linear 150ms}
+  nav.open{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity 200ms var(--eo),transform 200ms var(--eo)}
+  footer a{display:flex;align-items:center;min-height:44px;padding:0}
+}
+/* нижняя панель на телефоне: в экран на любой ширине и над полоской iPhone */
+@media(max-width:600px){
+  .mbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px))}
+  .mbar .btn{padding:0 8px;min-width:0;font-size:16px;gap:6px}
+  body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:360px){.mbar .btn svg{display:none}}
+@media(prefers-reduced-motion:reduce){
+  .nm,.lb,.nmb,.lb img,nav{transition:opacity 150ms ease!important;transform:none!important}
+  .btn:active,.soc a:active,.mbtns a:active,.cl a:active,.ncard:active,.nfeat:active,.aw:active,.eqc:active{transform:none}
+}
+.topbar a:focus-visible,footer a:focus-visible,.soc.dk a:focus-visible,.mapw a:focus-visible{outline-color:#fff}
+.mcard a:focus-visible{outline-color:var(--red2)}
+
+/* ===== Редизайн по Taste Skill: палитра бренда (камень, графит, красный логотипа),
+   шрифты EB Garamond + Jost, первый экран «Cinema frame» ===== */
+:root{--bg:#ffffff;--bg2:#f4f5f6;--ink:#1f2328;--mute:#4b5259;--line:#e2e5e8;--red:#c8161c;--red2:#a51217;--dark:#1f2328;--disp:"EB Garamond",Georgia,serif}
+body{font-family:"Jost",system-ui,sans-serif;font-size:18px;background:var(--bg)}
+h1,h2,h3,.nmc h3{font-family:var(--disp);font-weight:400;letter-spacing:-0.012em}
+h1{font-size:clamp(40px,5.2vw,72px);line-height:1.02;letter-spacing:-0.018em}
+h2{font-size:clamp(36px,4.2vw,56px);line-height:1.04}
+h3{font-size:clamp(23px,2vw,27px);line-height:1.15}
+.step .n,.dep,.mcard b,.ab b{font-family:var(--disp);font-weight:500}
+header{background:rgb(255 255 255/.94)}
+nav a{color:#2c3238}
+.grey{background:var(--bg2)}
+.card,.tm,.aw,.eqc,.nfeat,.ncard,.fcard,.cl a,.wl div,.step,.plogo{border-color:var(--line)}
+.btn{border-radius:999px}
+.btn.o{background:transparent;border-color:#c9ced3}
+.ntag{background:#f3dcd9}
+.card .ic,.cl .ic,.pin{background:#f3dcd9}
+/* первый экран */
+.hero{padding:16px max(4vw,16px) 0}
+.hero .wrap{display:block;max-width:1280px}
+.hframe{position:relative;height:calc(100svh - 154px);min-height:560px;max-height:860px;border-radius:22px;overflow:hidden;background:#2b2f33}
+.hframe>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.hbox{position:absolute;left:32px;bottom:32px;max-width:600px;background:var(--dark);color:#fff;padding:48px;border-radius:18px}
+.hbox h1{color:#f2efe9;max-width:15ch}
+.hbox .lead{color:#cfcac0;max-width:42ch;margin:18px 0 0;font-size:18px}
+.hbox .cta{margin-top:28px}
+@media(hover:hover) and (pointer:fine){}
+/* вход первого экрана: один раз при загрузке */
+[data-enter] .hbox,[data-enter] [data-enter] @keyframes henter{from{opacity:0;transform:translateY(14px)}}
+@media(max-width:900px){.hbox{padding:32px;max-width:calc(100% - 48px);left:24px;bottom:24px}}
+@media(max-width:600px){
+  .hero{padding:12px 12px 0}
+  .hframe{height:calc(100svh - 76px - 96px);min-height:520px;border-radius:18px}
+  .hframe>img{object-position:62% 50%}
+  .hbox{left:12px;right:12px;bottom:12px;max-width:none;padding:24px;border-radius:14px}
+  .hbox h1{font-size:40px}
+  .hbox .lead{font-size:17px}
+  .hbox .cta{display:none}
+  }
+@media(prefers-reduced-motion:reduce){[data-enter] .hbox,[data-enter] }
+
+/* МАКЕТ: первый экран на всю ширину, слайд-шоу фото */
+.hero{padding:0!important}
+.hero .wrap{max-width:none!important;padding:0!important;margin:0!important}
+.hframe{border-radius:0!important;height:calc(100svh - 120px)!important;max-height:none!important}
+.hslides,.hslides img{position:absolute;inset:0;width:100%;height:100%}
+.hslides img{object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.2s ease,transform 7s linear}
+.hslides img.on{opacity:1;transform:scale(1)}
+.hframe::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(0 0 0/.35),transparent 55%);pointer-events:none}
+.hbox{z-index:2;left:max(4vw,24px)!important;bottom:max(6vh,24px)!important}
+.hdots{position:absolute;z-index:2;right:max(4vw,24px);bottom:max(6vh,24px);display:flex;gap:8px}
+.hdots i{width:28px;height:4px;border-radius:2px;background:rgb(255 255 255/.45);transition:background .3s}
+.hdots i.on{background:#fff}
+@media(max-width:600px){.hframe{height:calc(100svh - 76px - 84px)!important}.hbox{left:12px!important;right:12px!important;bottom:12px!important}.hdots{top:16px;bottom:auto}}
+@media(prefers-reduced-motion:reduce){.hslides img{transition:opacity .3s}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span style="display:flex;align-items:center;gap:14px"><a href="tel:+77472792271"><span data-phone>+7 747 279 22 71</span></a><span class="soc sm" data-soc></span></span>
+</div></div>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="#top" aria-label="Bayanaul Geology — на главную"><img src="media/logo.png" alt="Bayanaul Geology"></a>
+    <button class="menu" id="menu" aria-label="Меню" aria-expanded="false"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav id="nav">
+      <a href="#services" data-nav="services">Услуги</a>
+      <a href="#works" data-nav="works">Объекты</a>
+      <a href="#equipment" data-nav="equipment">Спецтехника</a>
+      <a href="#team" data-nav="team">Руководство</a>
+      <a href="#awards" data-nav="awards">Достижения</a>
+      <a href="#news" data-nav="news">Новости</a>
+      <a href="#request" data-nav="request">Контакты</a>
+    </nav>
+    <a class="btn p" href="#request">Оставить заявку</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" data-pg="home" data-enter aria-labelledby="hero-h">
+  <div class="wrap">
+    <div class="hframe">
+      <div class="hslides"><img src="https://images.unsplash.com/photo-1562237553-36ad661d6f2c?auto=format&fit=crop&w=2400&q=80" alt="Буровая установка в поле" class=on fetchpriority=high><img src="https://images.unsplash.com/photo-1682663810771-89d21838530f?auto=format&fit=crop&w=2400&q=80" alt="Геодезический прибор на штативе на объекте" loading=lazy><img src="https://images.unsplash.com/photo-1748036564757-2bf6ead3488e?auto=format&fit=crop&w=2400&q=80" alt="Буровая техника на объекте" loading=lazy><img src="media/camp.jpg" alt="Полевой лагерь изыскателей в степи" loading=lazy></div><div class="hdots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hbox">
+        <h1 id="hero-h">Геология, гидрогеология и геодезия</h1>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="cta">
+        <a class="btn p" href="tel:+77472792271"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Позвонить</a>
+        <a class="btn wa" href="https://wa.me/77472792271"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>Написать в WhatsApp</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band grey" id="services" data-pg="home services">
+  <div class="wrap">
+    <h2>Что мы делаем</h2>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section class="strip" data-pg="home" style="background-image:url(media/camp.jpg)">
+  <div class="wrap">
+    <h2>Выезжаем в любую точку Казахстана</h2>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur lorem ipsum dolor sit.</p>
+    <div class="cta"><a class="btn p" href="#request">Обсудить выезд</a></div>
+  </div>
+</section>
+
+<section class="band" id="works" data-pg="works">
+  <div class="wrap">
+    <div class="kicker">Объекты</div>
+    <div class="head"><h2>Работа в поле</h2><a class="btn o" href="https://www.instagram.com/bayanaul.geology/">Больше в Instagram</a></div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+<div class="nm" id="nm" role="dialog" aria-modal="true" aria-labelledby="nmt"><div class="nmb"><button class="nmx" id="nmx" aria-label="Закрыть">✕</button><div id="nmi"></div><div class="nmc"><div class="nmeta" id="nmm"></div><h3 id="nmt"></h3><p class="txt" id="nmtx"></p><div id="nml"></div></div></div></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Фото"><button class="lbx" id="lbx" aria-label="Закрыть">✕</button><img id="lbi" alt=""><p id="lbc"></p></div>
+
+<section class="band" id="process" data-pg="services">
+  <div class="wrap">
+    <div class="kicker">Этапы</div>
+    <h2>Как мы работаем</h2>
+    <div class="steps" id="steps"></div>
+  </div>
+</section>
+
+<section class="band grey" id="clients" data-pg="services">
+  <div class="wrap who">
+    <div>
+      <div class="kicker">Заказчики</div>
+      <h2>Для кого мы работаем</h2>
+      <p class="lead">Elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim.</p>
+    </div>
+    <div class="wl" id="wl"></div>
+  </div>
+</section>
+
+<section class="band" id="equipment" data-pg="equipment">
+  <div class="wrap">
+    <div class="kicker">Спецтехника</div>
+    <h2>Наша техника</h2>
+    <div class="eq" id="eql"></div>
+  </div>
+</section>
+
+<section class="band grey" id="team" data-pg="team">
+  <div class="wrap">
+    <div class="kicker">Руководство</div>
+    <h2>Команда компании</h2>
+    <div class="team" id="teaml"></div>
+  </div>
+</section>
+
+<section class="band grey" id="awards" data-pg="awards">
+  <div class="wrap">
+    <div class="kicker">Достижения</div>
+    <h2>Награды и сертификаты</h2>
+    <div class="awards" id="awardl"></div>
+  </div>
+</section>
+
+<section class="band grey" id="news" data-pg="news">
+  <div class="wrap">
+    <div class="kicker">Новости</div>
+    <div class="head"><h2>Из жизни компании</h2><a class="btn o" href="https://www.instagram.com/bayanaul.geology/">@bayanaul.geology</a></div>
+    <div class="nwrap" id="newsl"></div>
+  </div>
+</section>
+
+<section class="band req" id="request" data-pg="home request">
+  <div class="wrap">
+    <div>
+      <h2>Оставьте заявку</h2>
+      <p class="lead">Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate.</p>
+      <div class="cl">
+        <a href="tel:+77472792271"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small>Телефон, консультация</small><b><span data-phone>+7 747 279 22 71</span></b></span></a>
+        <a href="https://wa.me/77472792271"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M3 21l1.7-5A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9.5c.5 2 2.5 4 4.5 4.5l1.2-1.2 1.8.8v1.6c-3.6.3-7.7-3.8-7.4-7.4h1.6l.8 1.8z"/></svg></span><span><small>WhatsApp</small><b>Написать сообщение</b></span></a>
+        <a href="https://www.instagram.com/bayanaul.geology/"><span class="ic"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></span><span><small>Instagram</small><b>@bayanaul.geology</b></span></a>
+        <a href="#map"><span class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><small>Офис</small><b data-addr>Караганда, ул. Таттимбета, 10/2</b></span></a>
+      </div>
+      <div class="socl"><small>Мы в соцсетях</small><div class="soc" data-soc></div></div>
+    </div>
+    <div class="fcard">
+      <form class="form" id="form" novalidate>
+        <label>Имя<input id="f-name" autocomplete="name"></label>
+        <label>Телефон<input id="f-phone" type="tel" autocomplete="tel" placeholder="+7"></label>
+        <label class="full">Услуга
+          <select id="f-svc">
+            <option>Инженерно-геологические изыскания</option>
+            <option>Бурение скважины на воду</option>
+            <option>Гидрогеологические исследования</option>
+            <option>Топографическая съёмка</option>
+            <option>Разведка ТПИ</option>
+            <option>Комплексные изыскания</option>
+            <option>Другое</option>
+          </select>
+        </label>
+        <label class="full grow">Объект и задача<textarea id="f-msg" placeholder="Например: частный дом, участок 10 соток, нужна скважина и геология под фундамент"></textarea></label>
+        <div class="full act"><button class="btn p" type="submit">Отправить заявку</button><span class="err" id="err" role="alert"></span></div>
+      </form>
+      <div class="ok" id="ok" role="status"></div>
+    </div>
+  </div>
+</section>
+<section class="band grey partners" id="partners" data-pg="home services">
+  <div class="wrap"><div class="kicker">Партнёры</div></div>
+  <div class="marq" id="marq" aria-label="Логотипы партнёров"><div class="mtrack" id="mtrack"></div></div>
+</section>
+<div class="pgnav" id="pgnav" hidden><a class="btn o" href="#top">← На главную</a><a class="btn p" href="#request">Оставить заявку</a></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="media/logo.png" alt="Bayanaul Geology">
+      <p style="margin:16px 0 0;max-width:36ch">Dolore eu fugiat nulla pariatur lorem ipsum dolor sit amet consectetur adipiscing elit sed.</p>
+    </div>
+    <div>
+      <h4>Услуги</h4>
+      <a href="#services">Инженерная геология</a><a href="#services">Гидрогеология и скважины</a><a href="#services">Геодезия</a><a href="#services">Разведка ТПИ</a>
+    </div>
+    <div>
+      <h4>Связь</h4>
+      <a href="tel:+77472792271"><span data-phone>+7 747 279 22 71</span></a><a href="#map" data-addr>Караганда, ул. Таттимбета, 10/2</a><a href="https://wa.me/77472792271">WhatsApp</a><div class="soc dk" data-soc style="margin-top:12px"></div>
+    </div>
+    <div class="mapw" id="map">
+      <div class="lmap" id="lmap" role="img" aria-label="Карта 2ГИС: Караганда, ул. Таттимбета, 10/2"></div>
+      <div class="mcard">
+        <div class="t"><span class="pin"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><small>Офис Bayanaul Geology</small><b data-addr>Караганда, ул. Таттимбета, 10/2</b><div class="sub">Incididunt ut labore et dolore magna</div></div></div>
+        <div class="mbtns">
+          <a class="g2" id="go2gis" href="https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>2ГИС</a>
+          <a id="goYa" href="https://yandex.kz/maps/?pt=73.160842,49.795671&amp;z=17&amp;l=map">Яндекс Карты</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy" id="yr"></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+{
+/* ССЫЛКИ НА СОЦСЕТИ — замените "#" на свои ссылки */
+const SICON={WhatsApp:'<path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/>',Telegram:'<path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2l-11 6.9-4.7-1.5c-1-.3-1-1 .2-1.5l18.5-7.1c.9-.3 1.6.2 1.4 1.3z"/>',Instagram:'<path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c0-1.6-.4-3-1.5-4.1S17.8 2.1 16.2 2c-1.7-.1-6.7-.1-8.4 0-1.6.1-3 .4-4.1 1.5S1.9 6.2 1.8 7.8c-.1 1.7-.1 6.7 0 8.4.1 1.6.4 3 1.5 4.1s2.5 1.5 4.1 1.5c1.7.1 6.7.1 8.4 0 1.6-.1 3-.4 4.1-1.5s1.5-2.5 1.5-4.1c.1-1.7.1-6.7 0-8.4zm-2.2 10.3a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.8.4s-4.6.1-5.8-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.8s-.1-4.6.4-5.8a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.8-.4s4.6-.1 5.8.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.8s.1 4.6-.4 5.8z"/>',Facebook:'<path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/>',LinkedIn:'<path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9.5h3V19zM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.8v1.3h.1c.4-.7 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.6V19z"/>'};
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-soon]');if(a)e.preventDefault()});
+/* карта: на телефоне открываем приложение 2ГИС, на компьютере — сайт */
+{
+  const ua=navigator.userAgent,isAnd=/Android/i.test(ua);
+  const web='https://2gis.kz/karaganda/geo/11822584677072527/73.160842,49.795671';
+  const intent=u=>'intent://'+u.replace('https://','')+'#Intent;scheme=https;package=ru.dublgis.dgismobile;S.browser_fallback_url='+encodeURIComponent(u)+';end';
+  if(isAnd){document.getElementById('go2gis').href=intent(web);}
+  if(window.L){try{
+    const P=[49.795671,73.160842],mob=matchMedia('(max-width:760px)').matches;
+    const m=L.map('lmap',{scrollWheelZoom:false,dragging:!L.Browser.mobile,tap:false,zoomControl:false,attributionControl:true}).setView(P,16);
+    L.control.zoom({position:'bottomright',zoomInTitle:'Приблизить',zoomOutTitle:'Отдалить'}).addTo(m);m.attributionControl.setPrefix(false);
+    L.tileLayer('https://tile{s}.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1',{subdomains:'0123',maxZoom:18,attribution:'© <a href="https://2gis.kz">2ГИС</a>'}).addTo(m);
+    const ic=L.divIcon({className:'',iconSize:[34,46],iconAnchor:[17,46],html:'<svg class="dpin" viewBox="0 0 34 46"><path d="M17 0C7.6 0 0 7.6 0 17c0 12.7 17 29 17 29s17-16.3 17-29C34 7.6 26.4 0 17 0z" fill="#e31e24"/><circle cx="17" cy="17" r="6.5" fill="#fff"/></svg>'});
+    L.marker(P,{icon:ic,title:'Bayanaul Geology'}).addTo(m).on('click',()=>{location.href=document.getElementById('go2gis').href});
+    const box=document.getElementById('lmap'),card=document.querySelector('.mcard');
+    const center=()=>{m.invalidateSize(false);m.setView(P,16,{animate:false});
+      if(!matchMedia('(max-width:760px)').matches){const off=(card.offsetWidth+24)/2;m.panBy([-off,0],{animate:false})}};
+    new ResizeObserver(()=>center()).observe(box);addEventListener('load',center);center();
+  }catch(e){}}
+
+}
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sel=document.getElementById('f-svc');
+/* Телефон: ссылки на соцсети и карты открываются в приложениях.
+   Android — через intent с запасной ссылкой на сайт; iPhone — через универсальные ссылки (обычный переход в той же вкладке). */
+{
+  const APPS=[[/(^|\.)instagram\.com$/,'com.instagram.android'],[/^wa\.me$|(^|\.)whatsapp\.com$/,'com.whatsapp'],[/^t\.me$|^telegram\.me$/,'org.telegram.messenger'],
+    [/(^|\.)facebook\.com$|^fb\.com$/,'com.facebook.katana'],[/(^|\.)linkedin\.com$/,'com.linkedin.android'],[/(^|\.)2gis\.(kz|ru|com)$/,'ru.dublgis.dgismobile'],[/(^|\.)yandex\.(kz|ru)$/,'ru.yandex.yandexmaps']];
+  const isAnd=/Android/i.test(navigator.userAgent);
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="https://"]');if(!a||a.hasAttribute('data-soon')||e.defaultPrevented)return;
+    let u;try{u=new URL(a.href)}catch(_){return}
+    const app=APPS.find(([re])=>re.test(u.hostname));if(!app)return;
+    e.preventDefault();
+    if(isAnd){location.href='intent://'+u.host+u.pathname+u.search+u.hash+'#Intent;scheme=https;package='+app[1]+';S.browser_fallback_url='+encodeURIComponent(u.href)+';end'}
+    else location.href=u.href; /* та же вкладка: iOS сам откроет приложение, если оно установлено */
+  });
+}
+/* Разделы-страницы: пункт меню показывает только свой раздел */
+{
+  const PAGES=['services','works','equipment','team','awards','news','request'];
+  const secs=[...document.querySelectorAll('[data-pg]')],links=[...document.querySelectorAll('[data-nav]')],pn=document.getElementById('pgnav');
+  const route=()=>{
+    const h=decodeURIComponent(location.hash.slice(1));
+    const page=PAGES.includes(h)?h:(h===''||h==='top'?'home':null);
+    if(!page)return; /* например #map — просто прокрутка */
+    secs.forEach(x=>x.classList.toggle('off',!x.dataset.pg.split(' ').includes(page)));
+    links.forEach(a=>a.classList.toggle('on',a.dataset.nav===page));
+    pn.hidden=page==='home'||page==='request';
+    scrollTo({top:0,behavior:'instant'});
+    if(page!=='home'){const t=document.getElementById(page);if(t)t.classList.remove('off')}
+  };
+  addEventListener('hashchange',route);route();
+}
+
+
+{const im=[...document.querySelectorAll('.hslides img')],d=[...document.querySelectorAll('.hdots i')];let n=0;d[0].classList.add('on');
+setInterval(()=>{im[n].classList.remove('on');d[n].classList.remove('on');n=(n+1)%im.length;im[n].classList.add('on');d[n].classList.add('on')},6000)}
+const IC={
+ geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
+ water:'<svg class="i" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>',
+ survey:'<svg class="i" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><path d="M12 8v3M12 11l-6 10M12 11l6 10M12 11v10"/></svg>',
+ ore:'<svg class="i" viewBox="0 0 24 24"><path d="M6 9l6-6 6 6-6 12z"/><path d="M6 9h12M9 9l3 12 3-12"/></svg>',
+ ok:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>'
+};
+let svc=[];const SVCI=['geo','water','survey','ore'];
+const renderSvc=()=>{document.getElementById('cards').innerHTML=svc.map((s,i)=>`<article class="card"><div class="ic">${IC[SVCI[i%4]]}</div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p><ul>${(s.items||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><a class="more btn o" href="#request" data-svc="${esc(s.title)}">Заказать эту услугу</a></article>`).join('');
+  sel.innerHTML=[...svc.map(s=>s.title),'Комплексные изыскания','Другое'].map(t=>`<option>${esc(t)}</option>`).join('')};
+
+let gal=[];const GSZ=['h2','w2','','','w2'];
+const renderGal=()=>{document.getElementById('gal').innerHTML=gal.map((g,i)=>`<figure class="${GSZ[i%5]}" tabindex="0" data-i="${i}"><img src="${esc(g.image)}" alt="${esc(g.caption)}" loading="lazy"><figcaption>${esc(g.caption)}</figcaption></figure>`).join('')};
+const lb=document.getElementById('lb'),lbi=document.getElementById('lbi'),lbc=document.getElementById('lbc');
+const openImg=(src,cap)=>{lbi.src=src;lbi.alt=cap||'';lbc.textContent=cap||'';lb.classList.add('open')};
+const openLb=i=>openImg(gal[i].image,gal[i].caption);
+const closeLb=()=>lb.classList.remove('open');
+const G=document.getElementById('gal');
+G.addEventListener('click',e=>{const f=e.target.closest('figure');if(f)openLb(+f.dataset.i)});
+G.addEventListener('keydown',e=>{const f=e.target.closest('figure');if(f&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openLb(+f.dataset.i)}});
+lb.addEventListener('click',e=>{if(e.target!==lbi)closeLb()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+const steps=[["Ad minim", "Exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."], ["Dolor in", "Velit esse cillum dolore eu fugiat nulla pariatur lorem ipsum."], ["Consectetur adipiscing", "Eiusmod tempor incididunt ut labore et dolore magna aliqua ut."], ["Veniam quis", "Laboris nisi ut aliquip ex ea commodo consequat duis aute."]];
+document.getElementById('steps').innerHTML=steps.map((s,i)=>`<div class="step"><div class="n">${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+
+const who=["Reprehenderit in voluptate", "Dolore eu fugiat", "Ipsum dolor sit", "Elit sed do", "Ut labore et", "Ut enim ad", "Nostrud exercitation ullamco", "Aliquip ex ea"];
+document.getElementById('wl').innerHTML=who.map(x=>`<div>${IC.ok}${x}</div>`).join('');
+
+const MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const fdate=d=>{const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(d||'');return m?`${+m[3]} ${MON[+m[2]-1]} ${m[1]}`:esc(d||'')};
+let NEWS=[],NSHOW=4;
+const nimg=n=>`<div class="nimg">${n.image?`<img src="${esc(n.image)}" alt="" loading="lazy">`:`<div class="ncover"><img src="media/logo-mark.png" alt=""></div>`}</div>`;
+const nmeta=n=>`<div class="nmeta">${n.tag?`<span class="ntag">${esc(n.tag)}</span>`:''}<time>${fdate(n.date)}</time></div>`;
+const renderNews=nw=>{if(nw)NEWS=[...nw].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  const L=NEWS.slice(0,NSHOW),[f,...rest]=L,box=document.getElementById('newsl');
+  if(!f){box.innerHTML='';return}
+  box.innerHTML=`<button class="nfeat" data-n="0">${nimg(f)}<div class="nb">${nmeta(f)}<h3>${esc(f.title)}</h3><p>${esc(f.text)}</p><span class="nmore">Читать полностью →</span></div></button>`
+   +(rest.length?`<div class="ngrid">${rest.map((n,i)=>`<button class="ncard" data-n="${i+1}">${nimg(n)}<div class="nb">${nmeta(n)}<h3>${esc(n.title)}</h3><p>${esc(n.text)}</p><span class="nmore">Подробнее →</span></div></button>`).join('')}</div>`:'')
+   +(NEWS.length>NSHOW?`<button class="btn o nall" id="nall">Показать ещё новости</button>`:'');
+};
+{
+  const nm=document.getElementById('nm'),box=document.getElementById('newsl');
+  const open=i=>{const n=NEWS[i];if(!n)return;
+    document.getElementById('nmi').innerHTML=nimg(n);document.getElementById('nmm').innerHTML=nmeta(n).replace(/^<div class="nmeta">|<\/div>$/g,'');
+    document.getElementById('nmt').textContent=n.title||'';document.getElementById('nmtx').textContent=n.text||'';
+    document.getElementById('nml').innerHTML=n.link?`<a class="btn o" href="${esc(n.link)}">${/instagram\.com/.test(n.link)?'Открыть пост в Instagram':'Открыть ссылку'}</a>`:'';
+    nm.classList.add('open');document.getElementById('nmx').focus()};
+  const close=()=>nm.classList.remove('open');
+  box.addEventListener('click',e=>{if(e.target.id==='nall'){NSHOW+=6;renderNews();return}const c=e.target.closest('[data-n]');if(c)open(+c.dataset.n)});
+  document.getElementById('nmx').addEventListener('click',close);
+  nm.addEventListener('click',e=>{if(e.target===nm)close()});
+  addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+}
+
+/* Контент из админки: content/*.json */
+let WA='77472792271';
+const applySettings=st=>{
+  const ph=(st.phone||'').trim(),digits=ph.replace(/\D/g,'');
+  if(ph){document.querySelectorAll('[data-phone]').forEach(e=>e.textContent=ph);document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.href='tel:+'+digits)}
+  const w=(st.whatsapp||'').replace(/\D/g,'');if(w){WA=w;document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href='https://wa.me/'+w)}
+  if(st.address)document.querySelectorAll('[data-addr]').forEach(e=>e.textContent=st.address);
+  const S=[['WhatsApp',w?'https://wa.me/'+w:''],['Telegram',st.telegram],['Instagram',st.instagram],['Facebook',st.facebook],['LinkedIn',st.linkedin]];
+  const h=S.map(([n,u])=>`<a href="${u?esc(u):'#'}" aria-label="${n}" title="${n}"${u?'':' data-soon'}><svg viewBox="0 0 24 24">${SICON[n]}</svg></a>`).join('');
+  document.querySelectorAll('[data-soc]').forEach(el=>el.innerHTML=h);
+};
+const J=p=>fetch(p,{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
+const renderPartners=ps=>{const one=ps.map(p=>{const inner=p.logo?`<img src="${esc(p.logo)}" alt="${esc(p.name)}" loading="lazy">`:`<span>${esc(p.name)}</span>`;
+    return p.link?`<a class="plogo" href="${esc(p.link)}" title="${esc(p.name)}">${inner}</a>`:`<div class="plogo" title="${esc(p.name)}">${inner}</div>`}).join('');
+  const t=document.getElementById('mtrack');t.innerHTML=one+one.replace(/<(a|div) class="plogo"/g,'<$1 aria-hidden="true" tabindex="-1" class="plogo"');
+  t.style.setProperty('--mdur',Math.max(20,ps.length*6)+'s');document.getElementById('partners').hidden=!ps.length};
+let EQ=[];
+const renderEq=e=>{EQ=e;document.getElementById('eql').innerHTML=e.map((x,i)=>`<article class="eqc"><div class="eqp" data-e="${i}">${x.photo?`<img src="${esc(x.photo)}" alt="${esc(x.name)}" loading="lazy">`:''}${x.example?'<span class="eqbadge">Пример</span>':''}</div><div class="eqb"><h3>${esc(x.name)}</h3>${x.text?`<p>${esc(x.text)}</p>`:''}${(x.specs||[]).length?`<table class="eqt"><tbody>${x.specs.map(r=>`<tr><td>${esc(r.label)}</td><td>${esc(r.value)}</td></tr>`).join('')}</tbody></table>`:''}<a class="btn o" href="#request">Заказать выезд</a></div></article>`).join('')};
+document.getElementById('eql').addEventListener('click',e=>{const p=e.target.closest('[data-e]');if(!p)return;const x=EQ[+p.dataset.e];if(x&&x.photo)openImg(x.photo,x.name)});
+const PERSON='<svg viewBox="0 0 100 100"><circle cx="50" cy="34" r="20"/><path d="M8 100c2-24 20-38 42-38s40 14 42 38z"/></svg>';
+const renderTeam=t=>{document.getElementById('teaml').innerHTML=t.map(p=>`<article class="tm"><div class="tph">${p.photo?`<img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy">`:PERSON}</div><div class="tb"><h3>${esc(p.name)}</h3><div class="trole">${esc(p.role)}</div>${p.text?`<p>${esc(p.text)}</p>`:''}</div></article>`).join('')};
+let AW=[];
+const CERT='<svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7.5 21l4.5-2.5 4.5 2.5L15 13.5"/></svg>';
+const renderAwards=a=>{AW=a;document.getElementById('awardl').innerHTML=a.map((x,i)=>`<button class="aw" data-a="${i}"${x.image?'':' style="cursor:default"'}><div class="aph">${x.image?`<img src="${esc(x.image)}" alt="${esc(x.title)}" loading="lazy">`:`<div class="ph">${CERT}</div>`}</div><div class="ab"><b>${esc(x.title)}</b>${x.year?`<span>${esc(x.year)}</span>`:''}</div></button>`).join('')};
+document.getElementById('awardl').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const x=AW[+b.dataset.a];if(x&&x.image)openImg(x.image,[x.title,x.year].filter(Boolean).join(', '))});
+Promise.all([J('content/settings.json'),J('content/services.json'),J('content/gallery.json'),J('content/news.json'),J('content/team.json'),J('content/awards.json'),J('content/equipment.json'),J('content/partners.json')]).then(([st,sv,gl,nw,tm,aw,eq,pt])=>{
+  if(Array.isArray(pt))renderPartners(pt);
+  if(Array.isArray(eq))renderEq(eq);
+  if(Array.isArray(tm))renderTeam(tm);
+  if(Array.isArray(aw))renderAwards(aw);
+  if(st)applySettings(st);
+  if(Array.isArray(sv)){svc=sv;renderSvc()}
+  if(Array.isArray(gl)){gal=gl;renderGal()}
+  if(Array.isArray(nw))renderNews(nw);
+});
+
+const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{const o=nav.classList.toggle('open');menu.setAttribute('aria-expanded',o)});
+nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');menu.setAttribute('aria-expanded',false)}});
+
+document.getElementById('cards').addEventListener('click',e=>{const a=e.target.closest('a.more');if(!a)return;const o=[...sel.options].find(o=>o.text===a.dataset.svc);if(o)sel.value=o.value});
+
+const form=document.getElementById('form'),err=document.getElementById('err'),ok=document.getElementById('ok');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=document.getElementById('f-name').value.trim(),p=document.getElementById('f-phone').value.trim(),msg=document.getElementById('f-msg').value.trim();
+  if(!n||p.replace(/\D/g,'').length<10){err.textContent='Укажите имя и телефон (не менее 10 цифр).';return}
+  err.textContent='';
+  const text=`Здравствуйте! Заявка с сайта.\nИмя: ${n}\nТелефон: ${p}\nУслуга: ${sel.value}`+(msg?`\nОбъект и задача: ${msg}`:'');
+  ok.innerHTML=`<b>Спасибо, ${esc(n)}!</b> Нажмите кнопку — сообщение с заявкой уже составлено.<div class="act"><a class="btn wa" href="https://wa.me/${WA}?text=${encodeURIComponent(text)}">Отправить в WhatsApp</a><a class="btn o" href="tel:+77472792271">Позвонить</a></div>`;
+  ok.classList.add('show');
+});
+document.getElementById('yr').textContent='© '+new Date().getFullYear()+' Bayanaul Geology. Все права защищены.';
+
+}
+</script>
+<div class="mbar" aria-label="Быстрая связь"><a class="btn p" href="tel:+77472792271"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Позвонить</a><a class="btn wa" href="https://wa.me/77472792271"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>WhatsApp</a></div>
+</body>
+</html>
