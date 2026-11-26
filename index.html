@@ -12,18 +12,18 @@
 <meta name="theme-color" content="#e31e24">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..600&family=Jost:wght@400..600&display=swap" rel="stylesheet">
 <style>
 /* VOICE: солидная инженерная компания — спокойно, точно, по делу
    IDEA: корпоративный буклет изыскательской фирмы: белая бумага, строгая сетка, фото с объектов
    PICTURE: крупное фото скважины, из которой пошла вода, + видео
-   COLOUR and TYPE: белый и светло-серый, графит #1f2328, красный логотипа #e31e24 как единственный акцент; Manrope + Inter
+   COLOUR and TYPE: белый и светло-серый, графит #1f2328, красный логотипа #e31e24 как единственный акцент; "Jost" + Inter
    LAYOUT: верхняя полоса контактов, шапка, герой текст/фото, 4 карточки услуг, фото-лента, объекты, этапы, заказчики, новости, заявка, тёмный подвал */
 :root{color-scheme:light;--bg:#fff;--bg2:#f5f6f7;--ink:#1f2328;--mute:#5d646c;--line:#e3e6e9;--red:#e31e24;--red2:#c4141a;--dark:#1b1f23}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:Manrope,Inter,sans-serif;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.01em}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Jost",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Jost",system-ui,sans-serif;line-height:1.1;text-wrap:balance;margin:0;letter-spacing:-.01em}
 h1{font-size:clamp(34px,4.6vw,54px);font-weight:800}
 h2{font-size:clamp(28px,3.2vw,40px);font-weight:800}
 h3{font-size:20px;font-weight:700}
@@ -36,7 +36,7 @@ img{max-width:100%}
 .kicker::before{content:"";width:28px;height:2px;background:var(--red)}
 .lead{font-size:17px;color:var(--mute);max-width:60ch;margin:14px 0 0}
 .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:8px;font:600 16px Inter,sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 26px;border-radius:8px;font:600 16px "Jost",system-ui,sans-serif;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s;white-space:nowrap}
 .btn.p{background:var(--red);color:#fff}.btn.p:hover{background:var(--red2)}
 .btn.o{border-color:var(--line);background:#fff;color:var(--ink)}.btn.o:hover{border-color:var(--ink)}
 .btn.wa{background:#25d366;color:#08311a}
@@ -69,7 +69,7 @@ nav a.on{color:var(--red);background:#fdecec}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:40px;border-top:1px solid var(--line)}
 .facts div{padding:18px 16px 0 0}
-.facts b{display:block;font:800 22px Manrope,sans-serif}
+.facts b{display:block;font:800 22px "Jost",system-ui,sans-serif}
 .facts span{font-size:14px;color:var(--mute)}
 .hpic{position:relative;aspect-ratio:4/4.4;border-radius:14px;overflow:hidden;background:var(--bg2)}
 .hpic>img{width:100%;height:100%;object-fit:cover;display:block}
@@ -117,7 +117,7 @@ nav a.on{color:var(--red);background:#fdecec}
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:44px;position:relative}
 .steps::before{content:"";position:absolute;left:24px;right:24px;top:24px;height:2px;background:var(--line)}
 .step{position:relative}
-.step .n{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--red);color:var(--red);display:grid;place-items:center;font:800 18px Manrope,sans-serif;position:relative}
+.step .n{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--red);color:var(--red);display:grid;place-items:center;font:800 18px "Jost",system-ui,sans-serif;position:relative}
 .step h3{margin-top:18px}.step p{margin:8px 0 0;color:var(--mute);font-size:15px}
 @media(max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps::before{display:none}}
 @media(max-width:520px){.steps{grid-template-columns:minmax(0,1fr)}}
@@ -138,7 +138,7 @@ nav a.on{color:var(--red);background:#fdecec}
 @keyframes marq{to{transform:translateX(calc(-50% - 10px))}}
 .plogo{flex:none;width:220px;height:110px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;padding:18px 24px;text-decoration:none;transition:border-color .3s,box-shadow .3s,transform .3s}
 .plogo img{max-width:100%;max-height:64px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
-.plogo span{font:800 22px Manrope,sans-serif;letter-spacing:.04em;color:#6b7279;text-transform:uppercase;transition:color .3s;text-align:center;line-height:1.1}
+.plogo span{font:800 22px "Jost",system-ui,sans-serif;letter-spacing:.04em;color:#6b7279;text-transform:uppercase;transition:color .3s;text-align:center;line-height:1.1}
 .plogo:hover{border-color:var(--red);box-shadow:0 10px 26px rgb(20 25 30/.1);transform:translateY(-3px)}
 .plogo:hover img{filter:none;opacity:1}.plogo:hover span{color:var(--red)}
 @media(max-width:600px){.plogo{width:160px;height:84px}.plogo span{font-size:17px}}
@@ -181,7 +181,7 @@ nav a.on{color:var(--red);background:#fdecec}
 .aph .ph{width:72%;aspect-ratio:3/4;background:#fff;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;box-shadow:0 4px 14px rgb(0 0 0/.08)}
 .aph .ph svg{width:42%;stroke:var(--red);fill:none;stroke-width:1.6}
 .ab{padding:14px 16px 16px;display:grid;gap:4px}
-.ab b{font:700 16px/1.3 Manrope,sans-serif}
+.ab b{font:700 16px/1.3 "Jost",system-ui,sans-serif}
 .ab span{font-size:14px;color:var(--mute)}
 @media(max-width:900px){.awards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){.awards{grid-template-columns:minmax(0,1fr)}}
@@ -232,7 +232,7 @@ nav a.on{color:var(--red);background:#fdecec}
 .form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .form label{display:grid;gap:6px;font-size:14px;font-weight:600}
 .form .full{grid-column:1/-1}
-input,select,textarea{font:16px Inter,sans-serif;padding:12px 14px;min-height:50px;border-radius:8px;border:1px solid #cfd4d9;background:#fff;color:var(--ink);width:100%}
+input,select,textarea{font:16px "Jost",system-ui,sans-serif;padding:12px 14px;min-height:50px;border-radius:8px;border:1px solid #cfd4d9;background:#fff;color:var(--ink);width:100%}
 textarea{min-height:110px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:-1px;border-color:var(--red)}
 .act{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
@@ -260,21 +260,21 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-off
 .mcard .t{display:flex;gap:12px;align-items:flex-start}
 .mcard .pin{width:40px;height:40px;border-radius:10px;background:#fdecec;color:var(--red);display:grid;place-items:center;flex:none}
 .mcard small{display:block;color:var(--mute);font-size:13px}
-.mcard b{display:block;font:800 19px/1.25 Manrope,sans-serif;color:var(--ink)}
+.mcard b{display:block;font:800 19px/1.25 "Jost",system-ui,sans-serif;color:var(--ink)}
 .mcard .sub{font-size:14px;color:var(--mute);margin-top:2px}
 .mbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mbtns a,.mbtns button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:8px;font:600 14px Inter,sans-serif;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;padding:0 10px}
+.mbtns a,.mbtns button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:8px;font:600 14px "Jost",system-ui,sans-serif;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;padding:0 10px}
 .mbtns a:hover,.mbtns button:hover{border-color:var(--ink)}
 .mbtns .g2 svg{color:#13803f}
 .mbtns .rt{grid-column:1/-1;background:var(--red);border-color:var(--red);color:#fff}.mbtns .rt:hover{background:var(--red2);border-color:var(--red2)}
 .mbtns svg{width:18px;height:18px;flex:none}
-.cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px Inter,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
+.cpy{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;border:0;background:none;color:var(--mute);font:500 14px "Jost",system-ui,sans-serif;cursor:pointer;padding:0}.cpy:hover{color:var(--ink)}.cpy svg{width:16px;height:16px}.cpy.ok{color:#1ba136}
 @media(max-width:760px){.mapw{min-height:0;display:flex;flex-direction:column}.lmap{position:relative;height:300px;order:-1}.mcard{margin:0;width:100%;border-radius:0;box-shadow:none}}
 /* подвал */
 footer{background:var(--dark);color:#b9bec3;padding:48px max(4vw,16px) 28px}
 footer .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:32px}
 footer img{height:34px;background:#fff;padding:6px 10px;border-radius:6px}
-footer h4{color:#fff;font:700 16px Manrope,sans-serif;margin:0 0 12px}
+footer h4{color:#fff;font:700 16px "Jost",system-ui,sans-serif;margin:0 0 12px}
 footer a{color:#e6e8ea;text-decoration:none;display:block;padding:3px 0}footer a:hover{color:#fff}
 footer .copy{grid-column:1/-1;border-top:1px solid #31363b;padding-top:18px;font-size:14px}
 @media(max-width:760px){footer .wrap{grid-template-columns:minmax(0,1fr)}}
@@ -415,6 +415,59 @@ p{text-wrap:pretty}
 }
 .topbar a:focus-visible,footer a:focus-visible,.soc.dk a:focus-visible,.mapw a:focus-visible{outline-color:#fff}
 .mcard a:focus-visible{outline-color:var(--red2)}
+
+/* ===== Редизайн по Taste Skill: палитра бренда (камень, графит, красный логотипа),
+   шрифты EB Garamond + Jost, первый экран «Cinema frame» ===== */
+:root{--bg:#f2efe9;--bg2:#e7e2d8;--ink:#1f2328;--mute:#51575e;--line:#d8d1c4;--red:#c8161c;--red2:#a51217;--dark:#1f2328;--disp:"EB Garamond",Georgia,serif}
+body{font-family:"Jost",system-ui,sans-serif;font-size:18px;background:var(--bg)}
+h1,h2,h3,.nmc h3{font-family:var(--disp);font-weight:400;letter-spacing:-0.012em}
+h1{font-size:clamp(40px,5.2vw,72px);line-height:1.02;letter-spacing:-0.018em}
+h2{font-size:clamp(36px,4.2vw,56px);line-height:1.04}
+h3{font-size:clamp(23px,2vw,27px);line-height:1.15}
+.step .n,.dep,.mcard b,.ab b{font-family:var(--disp);font-weight:500}
+header{background:rgb(242 239 233/.94)}
+nav a{color:#2c3238}
+.grey{background:var(--bg2)}
+.card,.tm,.aw,.eqc,.nfeat,.ncard,.fcard,.cl a,.wl div,.step,.plogo{border-color:var(--line)}
+.btn{border-radius:999px}
+.btn.o{background:transparent;border-color:#bfb7a8}
+.ntag{background:#f3dcd9}
+.card .ic,.cl .ic,.pin{background:#f3dcd9}
+/* первый экран */
+.hero{padding:16px max(4vw,16px) 0}
+.hero .wrap{display:block;max-width:1280px}
+.hframe{position:relative;height:calc(100svh - 154px);min-height:560px;max-height:860px;border-radius:22px;overflow:hidden;background:#2b2f33}
+.hframe>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.hbox{position:absolute;left:32px;bottom:32px;max-width:600px;background:var(--dark);color:#f2efe9;padding:48px;border-radius:18px}
+.hbox h1{color:#f2efe9;max-width:15ch}
+.hbox .lead{color:#cfcac0;max-width:42ch;margin:18px 0 0;font-size:18px}
+.hbox .cta{margin-top:28px}
+.hplay{position:absolute;right:32px;bottom:32px;display:flex;align-items:center;gap:14px;background:none;border:0;padding:0;cursor:pointer;font:inherit;text-align:left}
+.hplay .disc{width:64px;height:64px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;box-shadow:0 8px 24px rgb(0 0 0/.25);transition:transform 200ms var(--eo)}
+.hplay .disc svg{width:20px;height:20px;margin-left:3px}
+.hplay .lab{background:var(--dark);color:#f2efe9;padding:10px 18px;border-radius:999px;font-size:17px;font-weight:500;line-height:1.25}
+.hplay .lab small{display:block;font-size:14px;color:#b9b4aa;font-weight:400}
+@media(hover:hover) and (pointer:fine){.hplay:hover .disc{transform:scale(1.06)}}
+.hplay:active .disc{transform:scale(.95)}
+.hplay:focus-visible{outline:3px solid #fff;outline-offset:4px;border-radius:999px}
+.vm video{max-width:min(100%,460px);max-height:84vh;border-radius:12px;background:#000;transform:scale(.96);transition:transform 150ms ease}
+.vm.open video{transform:none;transition:transform 260ms var(--eo)}
+/* вход первого экрана: один раз при загрузке */
+[data-enter] .hbox,[data-enter] .hplay{animation:henter 700ms var(--eo) both}
+[data-enter] .hplay{animation-delay:120ms}
+@keyframes henter{from{opacity:0;transform:translateY(14px)}}
+@media(max-width:900px){.hbox{padding:32px;max-width:calc(100% - 48px);left:24px;bottom:24px}.hplay{right:24px;top:24px;bottom:auto}}
+@media(max-width:600px){
+  .hero{padding:12px 12px 0}
+  .hframe{height:calc(100svh - 76px - 96px);min-height:520px;border-radius:18px}
+  .hframe>img{object-position:62% 50%}
+  .hbox{left:12px;right:12px;bottom:12px;max-width:none;padding:24px;border-radius:14px}
+  .hbox h1{font-size:40px}
+  .hbox .lead{font-size:17px}
+  .hbox .cta{display:none}
+  .hplay{top:12px;right:12px}.hplay .disc{width:52px;height:52px}.hplay .lab{font-size:15px;padding:8px 14px}
+}
+@media(prefers-reduced-motion:reduce){[data-enter] .hbox,[data-enter] .hplay{animation:none}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
@@ -442,28 +495,26 @@ p{text-wrap:pretty}
 </header>
 
 <main id="top">
-<section class="hero" data-pg="home">
+<section class="hero" data-pg="home" data-enter aria-labelledby="hero-h">
   <div class="wrap">
-    <div>
-      <h1>Геология, гидрогеология и геодезия</h1>
-      <p class="lead">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud.</p>
-      <div class="cta">
+    <div class="hframe">
+      <img src="media/camp.jpg" alt="Полевой лагерь изыскателей в степи: палатка, машины и буровая установка на закате" fetchpriority="high">
+      <div class="hbox">
+        <h1 id="hero-h">Геология, гидрогеология и геодезия</h1>
+        <p class="lead">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="cta">
         <a class="btn p" href="tel:+77472792271"><svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Позвонить</a>
         <a class="btn wa" href="https://wa.me/77472792271"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>Написать в WhatsApp</a>
       </div>
-      <div class="facts">
-        <div><b>Nisi ut</b><span>commodo consequat duis aute</span></div>
-        <div><b>Reprehenderit in</b><span>cillum dolore eu fugiat</span></div>
-        <div><b>Ipsum dolor</b><span>adipiscing elit sed do</span></div>
       </div>
-    </div>
-    <div class="hpic">
-      <img src="media/water.jpg" alt="Буровая установка в степи, из скважины бьёт вода">
-      <div class="badge"><i></i>Ut labore et</div>
-      <div class="vcard"><video src="media/drilling.mp4" poster="media/drilling-poster.jpg" autoplay muted loop playsinline aria-label="Видео: вода из новой скважины"></video></div>
+      <button class="hplay" type="button" id="hplay" aria-label="Смотреть видео: скважина дала воду">
+        <span class="disc"><svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 2.6v12.8c0 .8.9 1.3 1.6.9l10.3-6.4c.6-.4.6-1.3 0-1.7L6.1 1.7c-.7-.4-1.6.1-1.6.9Z" fill="currentColor"/></svg></span>
+        <span class="lab">Скважина дала воду<small>Видео с объекта, 0:12</small></span>
+      </button>
     </div>
   </div>
 </section>
+<div class="lb vm" id="vm" role="dialog" aria-modal="true" aria-label="Видео с объекта"><button class="lbx" id="vmx" aria-label="Закрыть">✕</button><video id="vmv" src="media/drilling.mp4" poster="media/drilling-poster.jpg" controls playsinline preload="none"></video></div>
 
 <section class="band grey" id="services" data-pg="home services">
   <div class="wrap">
@@ -670,6 +721,16 @@ const sel=document.getElementById('f-svc');
     if(page!=='home'){const t=document.getElementById(page);if(t)t.classList.remove('off')}
   };
   addEventListener('hashchange',route);route();
+}
+
+{
+  const vm=document.getElementById('vm'),v=document.getElementById('vmv'),pb=document.getElementById('hplay');
+  const openV=()=>{vm.classList.add('open');try{v.currentTime=0;v.play()}catch(e){}document.getElementById('vmx').focus()};
+  const closeV=()=>{vm.classList.remove('open');try{v.pause()}catch(e){}pb.focus()};
+  pb.addEventListener('click',openV);
+  document.getElementById('vmx').addEventListener('click',closeV);
+  vm.addEventListener('click',e=>{if(e.target===vm)closeV()});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&vm.classList.contains('open'))closeV()});
 }
 const IC={
  geo:'<svg class="i" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/><path d="M12 3v18"/><circle cx="12" cy="20" r="1.5"/></svg>',
